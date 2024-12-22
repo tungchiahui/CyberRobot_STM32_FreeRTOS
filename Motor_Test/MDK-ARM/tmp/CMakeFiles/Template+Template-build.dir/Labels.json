@@ -1,0 +1,37 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template-build"
+		},
+		{
+			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template-build.rule"
+		},
+		{
+			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-build.rule"
+		},
+		{
+			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure.rule"
+		},
+		{
+			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch.rule"
+		},
+		{
+			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update.rule"
+		},
+		{
+			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download.rule"
+		},
+		{
+			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Template+Template"
+		],
+		"name" : "Template+Template-build"
+	}
+}

@@ -1,0 +1,14 @@
+# Target labels
+ Template+Template
+# Source files and their labels
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template-complete.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-build.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-install.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-test.rule
+/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update.rule
