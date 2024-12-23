@@ -4,6 +4,6 @@
 
 method=source_dir
 command=
-source_dir=/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template
+source_dir=C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template
 work_dir=
 

@@ -2,37 +2,43 @@
 	"sources" : 
 	[
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template-complete.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template-complete.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-build.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-build.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-database.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-install.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-executes.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-install.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-test.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir.rule"
 		},
 		{
-			"file" : "/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update.rule"
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch.rule"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-test.rule"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update.rule"
 		}
 	],
 	"target" : 

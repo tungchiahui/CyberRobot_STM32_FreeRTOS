@@ -19,13 +19,14 @@ set(BYTE_ORDER Little-endian)
 include("toolchain.cmake")
 
 # Setup project
-project(${CONTEXT} LANGUAGES ASM C)
+project(${CONTEXT} LANGUAGES ASM CXX C)
 
 # Compilation database
 add_custom_target(database
   COMMAND ${CMAKE_COMMAND} -E make_directory "${OUT_DIR}"
   COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json" "${OUT_DIR}"
 )
+set(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES ${CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES})
 set(CMAKE_C_STANDARD_INCLUDE_DIRECTORIES ${CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES})
 
 # Setup context
@@ -45,6 +46,8 @@ target_include_directories(${CONTEXT} PUBLIC
     ${SOLUTION_ROOT}/../Middlewares/Third_Party/FreeRTOS/Source/include
     ${SOLUTION_ROOT}/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
     ${SOLUTION_ROOT}/../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F
+    ${SOLUTION_ROOT}/../applications/Inc
+    ${SOLUTION_ROOT}/../bsp/boards/Inc
   >
   ${SOLUTION_ROOT}/RTE/_Template
   ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.1.0/CMSIS/Core/Include
@@ -91,15 +94,43 @@ target_compile_options(${CONTEXT} PUBLIC
     "SHELL:-Wno-license-management"
     "SHELL:-Wno-parentheses-equality"
   >
+  $<$<COMPILE_LANGUAGE:CXX>:
+    "SHELL:${CXX_CPU}"
+    "SHELL:${CXX_FLAGS}"
+    "SHELL:${CXX_BYTE_ORDER}"
+    "SHELL:-xc++"
+    "SHELL:-std=c++11"
+    "SHELL:-fno-rtti"
+    "SHELL:-funsigned-char"
+    "SHELL:-fshort-enums"
+    "SHELL:-fshort-wchar"
+    "SHELL:-ffunction-sections"
+    "SHELL:-Wno-packed"
+    "SHELL:-Wno-missing-variable-declarations"
+    "SHELL:-Wno-missing-prototypes"
+    "SHELL:-Wno-missing-noreturn"
+    "SHELL:-Wno-sign-conversion"
+    "SHELL:-Wno-nonportable-include-path"
+    "SHELL:-Wno-reserved-id-macro"
+    "SHELL:-Wno-unused-macros"
+    "SHELL:-Wno-documentation-unknown-command"
+    "SHELL:-Wno-documentation"
+    "SHELL:-Wno-license-management"
+    "SHELL:-Wno-parentheses-equality"
+  >
 )
 
 # Compile Options Abstractions
 add_library(${CONTEXT}_ABSTRACTIONS INTERFACE)
 cbuild_set_options_flags(ASM "debug" "on" "" "" ASM_OPTIONS_FLAGS_${CONTEXT})
+cbuild_set_options_flags(CXX "debug" "on" "" "" CXX_OPTIONS_FLAGS_${CONTEXT})
 cbuild_set_options_flags(CC "debug" "on" "" "" CC_OPTIONS_FLAGS_${CONTEXT})
 target_compile_options(${CONTEXT}_ABSTRACTIONS INTERFACE
   $<$<COMPILE_LANGUAGE:ASM>:
     "SHELL:${ASM_OPTIONS_FLAGS_${CONTEXT}}"
+  >
+  $<$<COMPILE_LANGUAGE:CXX>:
+    "SHELL:${CXX_OPTIONS_FLAGS_${CONTEXT}}"
   >
   $<$<COMPILE_LANGUAGE:C>:
     "SHELL:${CC_OPTIONS_FLAGS_${CONTEXT}}"
@@ -116,6 +147,8 @@ target_link_libraries(${CONTEXT} PUBLIC
   Group_Drivers_STM32F4xx_HAL_Driver
   Group_Drivers_CMSIS
   Group_Middlewares_FreeRTOS
+  Group_applications
+  Group_bsp_boards
   ARM_CMSIS_CORE_6_1_0
 )
 

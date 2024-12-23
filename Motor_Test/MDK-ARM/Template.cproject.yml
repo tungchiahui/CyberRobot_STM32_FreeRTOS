@@ -17,6 +17,8 @@ project:
         - ../Middlewares/Third_Party/FreeRTOS/Source/include
         - ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
         - ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F
+        - ../applications/Inc
+        - ../bsp/boards/Inc
       debug: "on"
       define:
         - USE_HAL_DRIVER
@@ -68,12 +70,17 @@ project:
         - file: startup_stm32f407xx.s
     - group: Application/User/Core
       files:
+        - file: ../Core/Src/startup_main.cpp
         - file: ../Core/Src/main.c
         - file: ../Core/Src/gpio.c
           misc:
             - CPP:
                 - -xc++
         - file: ../Core/Src/freertos.c
+          misc:
+            - CPP:
+                - -xc++
+        - file: ../Core/Src/tim.c
           misc:
             - CPP:
                 - -xc++
@@ -84,24 +91,6 @@ project:
             - CPP:
                 - -xc++
     - group: Drivers/STM32F4xx_HAL_Driver
-      misc:
-        - C-CPP:
-            - -Wno-packed
-            - -Wno-missing-variable-declarations
-            - -Wno-missing-prototypes
-            - -Wno-missing-noreturn
-            - -Wno-sign-conversion
-            - -Wno-nonportable-include-path
-            - -Wno-reserved-id-macro
-            - -Wno-unused-macros
-            - -Wno-documentation-unknown-command
-            - -Wno-documentation
-            - -Wno-license-management
-            - -Wno-parentheses-equality
-            - -Wno-covered-switch-default
-            - -Wno-unreachable-code-break
-          CPP:
-            - -xc++
       files:
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
           misc:
@@ -112,81 +101,21 @@ project:
             - CPP:
                 - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
-          misc:
-            - CPP:
-                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
-          misc:
-            - CPP:
-                - -xc++
     - group: Drivers/CMSIS
-      misc:
-        - C-CPP:
-            - -Wno-packed
-            - -Wno-missing-variable-declarations
-            - -Wno-missing-prototypes
-            - -Wno-missing-noreturn
-            - -Wno-sign-conversion
-            - -Wno-nonportable-include-path
-            - -Wno-reserved-id-macro
-            - -Wno-unused-macros
-            - -Wno-documentation-unknown-command
-            - -Wno-documentation
-            - -Wno-license-management
-            - -Wno-parentheses-equality
-            - -Wno-covered-switch-default
-            - -Wno-unreachable-code-break
-          CPP:
-            - -xc++
       files:
         - file: ../Core/Src/system_stm32f4xx.c
-          misc:
-            - CPP:
-                - -xc++
     - group: Middlewares/FreeRTOS
       misc:
         - C-CPP:
@@ -247,5 +176,11 @@ project:
           misc:
             - CPP:
                 - -xc++
+    - group: applications
+      files:
+        - file: ../applications/Src/mg513_gmr500ppr.cpp
+    - group: bsp/boards
+      files:
+        - file: ../bsp/boards/Src/bsp_delay.cpp
   components:
     - component: ARM::CMSIS:CORE

@@ -10,11 +10,15 @@ target_include_directories(Group_Application_MDK-ARM PUBLIC
 target_compile_definitions(Group_Application_MDK-ARM PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
+add_library(Group_Application_MDK-ARM_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_Application_MDK-ARM_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
 target_compile_options(Group_Application_MDK-ARM PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
 )
 target_link_libraries(Group_Application_MDK-ARM PUBLIC
-  ${CONTEXT}_ABSTRACTIONS
+  Group_Application_MDK-ARM_ABSTRACTIONS
 )
 set(COMPILE_DEFINITIONS
   STM32F407xx
@@ -30,9 +34,11 @@ add_library(Group_Application_User_Core OBJECT
   "${SOLUTION_ROOT}/../Core/Src/main.c"
   "${SOLUTION_ROOT}/../Core/Src/gpio.c"
   "${SOLUTION_ROOT}/../Core/Src/freertos.c"
+  "${SOLUTION_ROOT}/../Core/Src/tim.c"
   "${SOLUTION_ROOT}/../Core/Src/stm32f4xx_it.c"
   "${SOLUTION_ROOT}/../Core/Src/stm32f4xx_hal_msp.c"
   "${SOLUTION_ROOT}/../Core/Src/stm32f4xx_hal_timebase_tim.c"
+  "${SOLUTION_ROOT}/../Core/Src/startup_main.cpp"
 )
 target_include_directories(Group_Application_User_Core PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>
@@ -40,16 +46,23 @@ target_include_directories(Group_Application_User_Core PUBLIC
 target_compile_definitions(Group_Application_User_Core PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
+add_library(Group_Application_User_Core_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_Application_User_Core_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
 target_compile_options(Group_Application_User_Core PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
 )
 target_link_libraries(Group_Application_User_Core PUBLIC
-  ${CONTEXT}_ABSTRACTIONS
+  Group_Application_User_Core_ABSTRACTIONS
 )
 set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/gpio.c" PROPERTIES
   COMPILE_OPTIONS ""
 )
 set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/freertos.c" PROPERTIES
+  COMPILE_OPTIONS ""
+)
+set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/tim.c" PROPERTIES
   COMPILE_OPTIONS ""
 )
 set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/stm32f4xx_hal_timebase_tim.c" PROPERTIES
@@ -80,71 +93,20 @@ target_include_directories(Group_Drivers_STM32F4xx_HAL_Driver PUBLIC
 target_compile_definitions(Group_Drivers_STM32F4xx_HAL_Driver PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
+add_library(Group_Drivers_STM32F4xx_HAL_Driver_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_Drivers_STM32F4xx_HAL_Driver_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
 target_compile_options(Group_Drivers_STM32F4xx_HAL_Driver PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
-  $<$<COMPILE_LANGUAGE:C>:
-    "SHELL:-Wno-packed"
-    "SHELL:-Wno-missing-variable-declarations"
-    "SHELL:-Wno-missing-prototypes"
-    "SHELL:-Wno-missing-noreturn"
-    "SHELL:-Wno-sign-conversion"
-    "SHELL:-Wno-nonportable-include-path"
-    "SHELL:-Wno-reserved-id-macro"
-    "SHELL:-Wno-unused-macros"
-    "SHELL:-Wno-documentation-unknown-command"
-    "SHELL:-Wno-documentation"
-    "SHELL:-Wno-license-management"
-    "SHELL:-Wno-parentheses-equality"
-    "SHELL:-Wno-covered-switch-default"
-    "SHELL:-Wno-unreachable-code-break"
-  >
 )
 target_link_libraries(Group_Drivers_STM32F4xx_HAL_Driver PUBLIC
-  ${CONTEXT}_ABSTRACTIONS
+  Group_Drivers_STM32F4xx_HAL_Driver_ABSTRACTIONS
 )
 set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" PROPERTIES
   COMPILE_OPTIONS ""
 )
 set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" PROPERTIES
-  COMPILE_OPTIONS ""
-)
-set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c" PROPERTIES
   COMPILE_OPTIONS ""
 )
 
@@ -158,30 +120,15 @@ target_include_directories(Group_Drivers_CMSIS PUBLIC
 target_compile_definitions(Group_Drivers_CMSIS PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
-target_compile_options(Group_Drivers_CMSIS PUBLIC
-  $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
-  $<$<COMPILE_LANGUAGE:C>:
-    "SHELL:-Wno-packed"
-    "SHELL:-Wno-missing-variable-declarations"
-    "SHELL:-Wno-missing-prototypes"
-    "SHELL:-Wno-missing-noreturn"
-    "SHELL:-Wno-sign-conversion"
-    "SHELL:-Wno-nonportable-include-path"
-    "SHELL:-Wno-reserved-id-macro"
-    "SHELL:-Wno-unused-macros"
-    "SHELL:-Wno-documentation-unknown-command"
-    "SHELL:-Wno-documentation"
-    "SHELL:-Wno-license-management"
-    "SHELL:-Wno-parentheses-equality"
-    "SHELL:-Wno-covered-switch-default"
-    "SHELL:-Wno-unreachable-code-break"
-  >
-)
-target_link_libraries(Group_Drivers_CMSIS PUBLIC
+add_library(Group_Drivers_CMSIS_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_Drivers_CMSIS_ABSTRACTIONS INTERFACE
   ${CONTEXT}_ABSTRACTIONS
 )
-set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/system_stm32f4xx.c" PROPERTIES
-  COMPILE_OPTIONS ""
+target_compile_options(Group_Drivers_CMSIS PUBLIC
+  $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
+)
+target_link_libraries(Group_Drivers_CMSIS PUBLIC
+  Group_Drivers_CMSIS_ABSTRACTIONS
 )
 
 # group Middlewares/FreeRTOS
@@ -203,6 +150,10 @@ target_include_directories(Group_Middlewares_FreeRTOS PUBLIC
 target_compile_definitions(Group_Middlewares_FreeRTOS PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
+add_library(Group_Middlewares_FreeRTOS_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_Middlewares_FreeRTOS_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
 target_compile_options(Group_Middlewares_FreeRTOS PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
   $<$<COMPILE_LANGUAGE:C>:
@@ -221,9 +172,26 @@ target_compile_options(Group_Middlewares_FreeRTOS PUBLIC
     "SHELL:-Wno-covered-switch-default"
     "SHELL:-Wno-unreachable-code-break"
   >
+  $<$<COMPILE_LANGUAGE:CXX>:
+    "SHELL:-xc++"
+    "SHELL:-Wno-packed"
+    "SHELL:-Wno-missing-variable-declarations"
+    "SHELL:-Wno-missing-prototypes"
+    "SHELL:-Wno-missing-noreturn"
+    "SHELL:-Wno-sign-conversion"
+    "SHELL:-Wno-nonportable-include-path"
+    "SHELL:-Wno-reserved-id-macro"
+    "SHELL:-Wno-unused-macros"
+    "SHELL:-Wno-documentation-unknown-command"
+    "SHELL:-Wno-documentation"
+    "SHELL:-Wno-license-management"
+    "SHELL:-Wno-parentheses-equality"
+    "SHELL:-Wno-covered-switch-default"
+    "SHELL:-Wno-unreachable-code-break"
+  >
 )
 target_link_libraries(Group_Middlewares_FreeRTOS PUBLIC
-  ${CONTEXT}_ABSTRACTIONS
+  Group_Middlewares_FreeRTOS_ABSTRACTIONS
 )
 set_source_files_properties("${SOLUTION_ROOT}/../Middlewares/Third_Party/FreeRTOS/Source/croutine.c" PROPERTIES
   COMPILE_OPTIONS ""
@@ -254,4 +222,46 @@ set_source_files_properties("${SOLUTION_ROOT}/../Middlewares/Third_Party/FreeRTO
 )
 set_source_files_properties("${SOLUTION_ROOT}/../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c" PROPERTIES
   COMPILE_OPTIONS ""
+)
+
+# group applications
+add_library(Group_applications OBJECT
+  "${SOLUTION_ROOT}/../applications/Src/mg513_gmr500ppr.cpp"
+)
+target_include_directories(Group_applications PUBLIC
+  $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>
+)
+target_compile_definitions(Group_applications PUBLIC
+  $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
+)
+add_library(Group_applications_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_applications_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
+target_compile_options(Group_applications PUBLIC
+  $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
+)
+target_link_libraries(Group_applications PUBLIC
+  Group_applications_ABSTRACTIONS
+)
+
+# group bsp/boards
+add_library(Group_bsp_boards OBJECT
+  "${SOLUTION_ROOT}/../bsp/boards/Src/bsp_delay.cpp"
+)
+target_include_directories(Group_bsp_boards PUBLIC
+  $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>
+)
+target_compile_definitions(Group_bsp_boards PUBLIC
+  $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
+)
+add_library(Group_bsp_boards_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_bsp_boards_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
+target_compile_options(Group_bsp_boards PUBLIC
+  $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
+)
+target_link_libraries(Group_bsp_boards PUBLIC
+  Group_bsp_boards_ABSTRACTIONS
 )

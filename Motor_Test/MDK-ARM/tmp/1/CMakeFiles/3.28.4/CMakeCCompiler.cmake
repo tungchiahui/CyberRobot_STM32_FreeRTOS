@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "/home/tungchiahui/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin//armclang")
+set(CMAKE_C_COMPILER "c:/Users/tung/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin//armclang.exe")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "ARMClang")
 set(CMAKE_C_COMPILER_VERSION "6.23.0")
@@ -21,11 +21,11 @@ set(CMAKE_C_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/home/tungchiahui/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin/armar")
+set(CMAKE_AR "c:/Users/tung/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin/armar.exe")
 set(CMAKE_C_COMPILER_AR "")
-set(CMAKE_RANLIB "/usr/bin/ranlib")
+set(CMAKE_RANLIB ":")
 set(CMAKE_C_COMPILER_RANLIB "")
-set(CMAKE_LINKER "/home/tungchiahui/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin/armlink")
+set(CMAKE_LINKER "c:/Users/tung/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin/armlink.exe")
 set(CMAKE_MT "")
 set(CMAKE_TAPI "CMAKE_TAPI-NOTFOUND")
 set(CMAKE_COMPILER_IS_GNUCC )
@@ -68,7 +68,7 @@ endif()
 
 
 
-set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "/home/tungchiahui/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/include")
+set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "C:/Users/tung/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/include")
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "")
 set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")
