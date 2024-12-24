@@ -91,6 +91,8 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_TIM6_Init();
+  MX_TIM10_Init();
+  MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */

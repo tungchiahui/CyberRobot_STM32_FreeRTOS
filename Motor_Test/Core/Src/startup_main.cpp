@@ -5,8 +5,8 @@ void startup_main(void)
 {
 
 	
-#if isRTOS==0    	//Èç¹ûÊÇÂã»ú¿ª·¢
-	for(;;)  //µÈÍ¬ÓÚwhile(true)
+#if isRTOS==0    	//å¦‚æœæ˜¯è£¸æœºå¼€å‘
+	for(;;)  //ç­‰åŒäºwhile(true)
 	{
 		
 	}

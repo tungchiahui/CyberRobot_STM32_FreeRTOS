@@ -1,22 +1,42 @@
 #include "mg513_gmr500ppr.h"
 #include "stm32f407xx.h"
+#include "stm32f4xx_hal_tim.h"
 #include "tim.h"
 
 
 MG513_GMR500PPR mg513_gmr500ppr_motor[4];
+int maxccr[4];
+
+
+#define LimitMax(input, max)   \
+    {                          \
+        if (input > max)       \
+        {                      \
+            input = max;       \
+        }                      \
+        else if (input < -max) \
+        {                      \
+            input = -max;      \
+        }                      \
+    }
+
 
 extern "C"
 void StartDefaultTask(void const * argument)
 {
     //初始化编码器
-    mg513_gmr500ppr_motor[0].Init();
+    mg513_gmr500ppr_motor[0].encoder.Init(&motor0_encoder_htim);
+
+    //初始化电机驱动器
+    mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel,500);
 
     //定时器中断
     HAL_TIM_Base_Start_IT(&htim6);
 
     for(;;)
     {
-        
+        mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(0);
+        osDelay(1);
     }
 }
 
@@ -58,25 +78,65 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 
-void MG513_GMR500PPR::Init()
+
+
+void MG513_GMR500PPR::AT8236_Cmd::Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Channel_a,TIM_HandleTypeDef *htim_b,uint32_t TIM_Channel_b,int maxpulse)
 {
-    HAL_TIM_Encoder_Start_IT(&motor0_encoder_htim,TIM_CHANNEL_1);
-	HAL_TIM_Encoder_Start_IT(&motor0_encoder_htim,TIM_CHANNEL_2);
+    this->htim_pwma = htim_a;
+    this->TIM_Channel_Pwma = TIM_Channel_a;
+    this->htim_pwmb = htim_b;
+    this->TIM_Channel_Pwmb = TIM_Channel_b;
+    this->max_pulse = maxpulse;
+
+    HAL_TIM_PWM_Start(htim_a,TIM_Channel_a);
+    HAL_TIM_PWM_Start(htim_b,TIM_Channel_b);
+
 }
+
+
+/**
+ * @brief       AT8236电机驱动控制
+ * @param       无
+ * @retval      编码器值
+ */
+void MG513_GMR500PPR::AT8236_Cmd::PWM_Pulse_CMD(int pulse)
+{
+    LimitMax(pulse,this->max_pulse);
+
+    if(pulse > 0)   //正转
+    {
+        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,pulse);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,0);
+    }
+    else if(pulse < 0)   //反转
+    {
+        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,0);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,pulse);
+    }
+    else  //制动
+    {
+        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,0);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,0);
+    }
+    
+}
+
+
+void MG513_GMR500PPR::Encoder::Init(TIM_HandleTypeDef *htim)
+{
+    this->htim_encoder = htim;
+
+    HAL_TIM_Encoder_Start_IT(htim_encoder,TIM_CHANNEL_1);
+	HAL_TIM_Encoder_Start_IT(htim_encoder,TIM_CHANNEL_2);
+
+}
+
 
 void MG513_GMR500PPR::Encoder::get_finall_encoder_value(TIM_HandleTypeDef *htim)
 {
     encoder_data.encoder_now = get_encoder_value(htim);                             /* 获取编码器值，用于计算速度 */
     motor_message_filtering(&encoder_data,&motor_data,LPF_Q,GAP_TIME_MS);      /* 中位平均值滤除编码器抖动数据，50ms计算一次速度*/
 }
-
-void MG513_GMR500PPR::AT8236_Cmd::PWM_Pulse_CMD(int16_t i,int pulse)
-{
-    mg513_gmr500ppr_motor[i]
-}
-
-
-
 
 
 /**
