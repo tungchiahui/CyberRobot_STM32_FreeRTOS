@@ -28,7 +28,7 @@ void StartDefaultTask(void const * argument)
     mg513_gmr500ppr_motor[0].encoder.Init(&motor0_encoder_htim);
 
     //初始化电机驱动器
-    mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel,500);
+    mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel);
 
     //定时器中断
     HAL_TIM_Base_Start_IT(&htim6);
@@ -79,14 +79,34 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 
 
-
-void MG513_GMR500PPR::AT8236_Cmd::Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Channel_a,TIM_HandleTypeDef *htim_b,uint32_t TIM_Channel_b,int maxpulse)
+/**
+ * @brief       AT8236驱动初始化
+ * @param        htim_a:定时器句柄指针
+ * @param        htim_b:定时器句柄指针
+ * @param        TIM_Channel_a:定时器通道
+ * @param        TIM_Channel_b:定时器通道
+ * @param        maxpulse:最大pulse
+ * @note        无
+ * @retval      无
+ */
+void MG513_GMR500PPR::AT8236_Cmd::Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Channel_a,TIM_HandleTypeDef *htim_b,uint32_t TIM_Channel_b)
 {
     this->htim_pwma = htim_a;
     this->TIM_Channel_Pwma = TIM_Channel_a;
     this->htim_pwmb = htim_b;
     this->TIM_Channel_Pwmb = TIM_Channel_b;
-    this->max_pulse = maxpulse;
+
+    if(htim_a->Init.Period >= htim_b->Init.Period)
+    {
+        this->max_pulse = htim_a->Init.Period;  //最大重装载数
+    }
+    if(htim_a->Init.Period < htim_b->Init.Period)
+    {
+        this->max_pulse = htim_b->Init.Period;  //最大重装载数
+    }
+    
+
+
 
     HAL_TIM_PWM_Start(htim_a,TIM_Channel_a);
     HAL_TIM_PWM_Start(htim_b,TIM_Channel_b);

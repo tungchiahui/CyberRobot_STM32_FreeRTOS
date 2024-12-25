@@ -1,5 +1,15 @@
 {
     "clangd.arguments": [
         "--compile-commands-dir=c:\\Users\\tung\\UserFolder\\XiaomiCloud\\Work\\Source\\CyberNaviRobot\\MCU_MainController\\Motor_Test\\MDK-ARM\\out\\Template\\Template"
+    ],
+    "cmsis-csolution.actions": [
+        {
+            "path": "Template.csolution.yml",
+            "target": "Template",
+            "config": {
+                "run": "Flash Device",
+                "debug": "Arm Debugger"
+            }
+        }
     ]
 }

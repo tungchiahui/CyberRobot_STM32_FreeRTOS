@@ -36,4 +36,5 @@ template/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\Core\Inc\tim.h ..\Core\Inc\gpio.h
+  ..\Core\Inc\tim.h ..\Core\Inc\gpio.h ..\Core\Inc\startup_main.h \
+  ..\bsp\boards\Inc\struct_typedef.h

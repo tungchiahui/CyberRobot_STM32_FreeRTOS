@@ -12,14 +12,22 @@ extern "C"
 
 #define ABS(x)	( (x>0) ? (x) : (-x) ) 
 
-#define PULSE_PER_REVOLUTION  13.0f	/* 线数 */
+#define PULSE_PER_REVOLUTION  500.0f	/* 线数 */
 #define FRE_DOU_RATIO         4.0f  	/* 倍频系数，根据编码器模式选 */
 #define REDUCTION_RATIO       30.0f  /* 减速比x:1 */
-#define GAP_TIME_MS           50     //采集间隔时长
+#define GAP_TIME_MS           1       //采集间隔时长
 #define LPF_Q                 0.9f    //低通滤波Q系数
 
-
+//Initialize motor speed control and, for controlling motor speed, PWM frequency 10kHz
+//初始化电机速度控制以及，用于控制电机速度，PWM频率10KHZ
+//APB2时钟频率为168M，满PWM为16799，频率=168M/((16799+1)*(0+1))=10k
+//PSC = 1-1
+//ARR = 16800-1
+	
+	
 //电机驱动板AT8236对应的定时器
+//TIM10 APB2
+//TIM11 APB2
 #define MOTOR0_PWMA_TIM_BASE      	 TIM10
 #define MOTOR0_PWMA_TIM_Channel    	 TIM_CHANNEL_1
 #define motor0_pwma_htim    		 htim10
@@ -31,6 +39,11 @@ extern "C"
 
 
 //电机编码器对应的定时器
+//TIM2 APB1
+//TIM3 APB1
+//TIM4 APB1
+//TIM5 APB1
+//TIM6 APB1
 #define MOTOR0_ENCODER_TIM_BASE      TIM2
 #define motor0_encoder_htim    		 htim2
 
@@ -86,7 +99,7 @@ class MG513_GMR500PPR
 		uint32_t TIM_Channel_Pwmb;
 		int max_pulse;
 
-		void Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Channel_a,TIM_HandleTypeDef *htim_b,uint32_t TIM_Channel_b,int maxpulse);
+		void Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Channel_a,TIM_HandleTypeDef *htim_b,uint32_t TIM_Channel_b);
 		void PWM_Pulse_CMD(int pulse);
 		
 	}at8236_cmd;

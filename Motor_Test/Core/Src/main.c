@@ -24,7 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "startup_main.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,7 +94,7 @@ int main(void)
   MX_TIM10_Init();
   MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
-
+  startup_main();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
@@ -173,18 +173,18 @@ void SystemClock_Config(void)
   * @param  htim : TIM handle
   * @retval None
   */
-// void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-// {
-//   /* USER CODE BEGIN Callback 0 */
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+//  /* USER CODE BEGIN Callback 0 */
 
-//   /* USER CODE END Callback 0 */
-//   if (htim->Instance == TIM7) {
-//     HAL_IncTick();
-//   }
-//   /* USER CODE BEGIN Callback 1 */
+//  /* USER CODE END Callback 0 */
+//  if (htim->Instance == TIM7) {
+//    HAL_IncTick();
+//  }
+//  /* USER CODE BEGIN Callback 1 */
 
-//   /* USER CODE END Callback 1 */
-// }
+//  /* USER CODE END Callback 1 */
+//}
 
 /**
   * @brief  This function is executed in case of error occurrence.
