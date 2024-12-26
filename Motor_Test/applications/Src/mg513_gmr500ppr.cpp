@@ -1,4 +1,6 @@
 #include "mg513_gmr500ppr.h"
+#include <cmath>
+#include <cstdlib>
 #include "stm32f407xx.h"
 #include "stm32f4xx_hal_tim.h"
 #include "tim.h"
@@ -35,7 +37,7 @@ void StartDefaultTask(void const * argument)
 
     for(;;)
     {
-        mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(0);
+        mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(3000);
         osDelay(1);
     }
 }
@@ -121,22 +123,24 @@ void MG513_GMR500PPR::AT8236_Cmd::Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Ch
  */
 void MG513_GMR500PPR::AT8236_Cmd::PWM_Pulse_CMD(int pulse)
 {
-    LimitMax(pulse,this->max_pulse);
+    int32_t abs_pulse = abs(pulse);
+    LimitMax(abs_pulse,this->max_pulse);
 
+//满衰减
     if(pulse > 0)   //正转
     {
-        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,pulse);
-        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,0);
+        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,this->max_pulse);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,abs_pulse);
     }
     else if(pulse < 0)   //反转
     {
-        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,0);
-        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,pulse);
+        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,abs_pulse);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,this->max_pulse);
     }
     else  //制动
     {
-        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,0);
-        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,0);
+        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,this->max_pulse);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,this->max_pulse);
     }
     
 }

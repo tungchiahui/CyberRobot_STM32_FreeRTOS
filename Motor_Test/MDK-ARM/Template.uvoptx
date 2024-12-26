@@ -155,6 +155,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>mg513_gmr500ppr_motor,0x0A</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>abs_pulse</ItemText>
+        </Ww>
       </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
