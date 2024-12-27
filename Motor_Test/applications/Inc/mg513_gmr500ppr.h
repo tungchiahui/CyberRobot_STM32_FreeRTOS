@@ -34,14 +34,13 @@ extern "C"
 //TIM9  APB2
 //TIM10 APB2
 //TIM11 APB2
-#define MOTOR0_PWMA_TIM_BASE      	 TIM10
+#define MOTOR0_PWMA_TIM_BASE      	 TIM11
 #define MOTOR0_PWMA_TIM_Channel    	 TIM_CHANNEL_1
-#define motor0_pwma_htim    		 htim10
+#define motor0_pwma_htim    		 htim11
 
-#define MOTOR0_PWMB_TIM_BASE      	 TIM11
+#define MOTOR0_PWMB_TIM_BASE      	 TIM10
 #define MOTOR0_PWMB_TIM_Channel    	 TIM_CHANNEL_1
-#define motor0_pwmb_htim    		 htim11
-
+#define motor0_pwmb_htim    		 htim10
 
 #define MOTOR1_PWMA_TIM_BASE      	 TIM9
 #define MOTOR1_PWMA_TIM_Channel    	 TIM_CHANNEL_1
@@ -50,7 +49,6 @@ extern "C"
 #define MOTOR1_PWMB_TIM_BASE      	 TIM9
 #define MOTOR1_PWMB_TIM_Channel    	 TIM_CHANNEL_2
 #define motor1_pwmb_htim    		 htim9
-
 
 #define MOTOR2_PWMA_TIM_BASE      	 TIM1
 #define MOTOR2_PWMA_TIM_Channel    	 TIM_CHANNEL_1
@@ -62,11 +60,11 @@ extern "C"
 
 
 #define MOTOR3_PWMA_TIM_BASE      	 TIM1
-#define MOTOR3_PWMA_TIM_Channel    	 TIM_CHANNEL_3
+#define MOTOR3_PWMA_TIM_Channel    	 TIM_CHANNEL_4
 #define motor3_pwma_htim    		 htim1
 
 #define MOTOR3_PWMB_TIM_BASE      	 TIM1
-#define MOTOR3_PWMB_TIM_Channel    	 TIM_CHANNEL_4
+#define MOTOR3_PWMB_TIM_Channel    	 TIM_CHANNEL_3
 #define motor3_pwmb_htim    		 htim1
 
 

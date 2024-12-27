@@ -47,20 +47,20 @@ void StartDefaultTask(void const * argument)
 
     for(;;)
     {
-//        mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(100,0));
-        mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(3000);
+       mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,0));
+        // mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(3000);
 //			mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,0));
 
-//        mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(100,1));
-        mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(3000);
+       mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,1));
+        // mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(3000);
 //			mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,1));
 //
-//        mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(100,2));
-        mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(3000);
+       mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,2));
+        // mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(3000);
 //			mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,2));
 
-//        mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(100,3));
-        mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(3000);
+       mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,3));
+        // mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(3000);
 //			mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,3));
         osDelay(1);
     }
@@ -191,16 +191,16 @@ void MG513_GMR500PPR::AT8236_Cmd::PWM_Pulse_CMD(int inv_pulse)
 	int32_t pulse = this->max_pulse - abs_pulse;
 
 //慢衰减
-//转子方向顺时针旋转为正
+//转轴方向顺时针旋转为正
 	  if(inv_pulse > 0)   //正转
     {
-        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,pulse);
-        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,this->max_pulse);
+			  __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,this->max_pulse);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,pulse);
     }
     else if(inv_pulse < 0)   //反转
     {
-        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,this->max_pulse);
-        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,pulse);
+        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,pulse);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,this->max_pulse);
     }
     else  //制动
     {
