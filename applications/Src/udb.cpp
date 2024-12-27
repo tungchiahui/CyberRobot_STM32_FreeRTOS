@@ -5,10 +5,13 @@
 //USART_Debuger
 uint8_t rx_buffer[1];
 
+//应用数据
+UDB udb;
+
 extern "C"
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if(huart->Instance == USART1)
+	if(huart->Instance == USART2)
 	{
 		udb.rx.Data_Analysis(rx_buffer);
 	}
@@ -25,8 +28,8 @@ bool UDB::RX::Data_Apply(void)
 	this->data.fp32_buffer[i];
 */
 
-    this->apply.rc.s[0] = this->data.bool_buffer[0];
-    this->apply.rc.s[1] = this->data.bool_buffer[1];
+  this->apply.rc.s[0] = this->data.bool_buffer[0];
+  this->apply.rc.s[1] = this->data.bool_buffer[1];
 
 	this->apply.rc.ch[0] = this->data.int16_buffer[0];
 	this->apply.rc.ch[1] = this->data.int16_buffer[1];

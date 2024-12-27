@@ -7,7 +7,6 @@ extern "C"
 #endif
 
 #include "startup_main.h"
-#include "stm32f103xb.h"
 #include <cstdint>
 
 /*接收数据数量*/
@@ -102,9 +101,9 @@ class UDB
 		fp32 Bytes2Fp32(uint8_t DH, uint8_t D2, uint8_t D3, uint8_t DL);
 	}convert;
 
-}udb;
+};
 
-
+extern UDB udb;
 
 #ifdef __cplusplus
 }

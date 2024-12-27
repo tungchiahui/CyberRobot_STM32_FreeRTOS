@@ -35,6 +35,7 @@ add_library(Group_Application_User_Core OBJECT
   "${SOLUTION_ROOT}/../Core/Src/gpio.c"
   "${SOLUTION_ROOT}/../Core/Src/freertos.c"
   "${SOLUTION_ROOT}/../Core/Src/tim.c"
+  "${SOLUTION_ROOT}/../Core/Src/usart.c"
   "${SOLUTION_ROOT}/../Core/Src/stm32f4xx_it.c"
   "${SOLUTION_ROOT}/../Core/Src/stm32f4xx_hal_msp.c"
   "${SOLUTION_ROOT}/../Core/Src/stm32f4xx_hal_timebase_tim.c"
@@ -65,6 +66,9 @@ set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/freertos.c" PROPERTIES
 set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/tim.c" PROPERTIES
   COMPILE_OPTIONS ""
 )
+set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/usart.c" PROPERTIES
+  COMPILE_OPTIONS ""
+)
 set_source_files_properties("${SOLUTION_ROOT}/../Core/Src/stm32f4xx_hal_timebase_tim.c" PROPERTIES
   COMPILE_OPTIONS ""
 )
@@ -86,6 +90,7 @@ add_library(Group_Drivers_STM32F4xx_HAL_Driver OBJECT
   "${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
   "${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
   "${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"
+  "${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
 )
 target_include_directories(Group_Drivers_STM32F4xx_HAL_Driver PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>
@@ -107,6 +112,9 @@ set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Sr
   COMPILE_OPTIONS ""
 )
 set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" PROPERTIES
+  COMPILE_OPTIONS ""
+)
+set_source_files_properties("${SOLUTION_ROOT}/../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" PROPERTIES
   COMPILE_OPTIONS ""
 )
 
@@ -231,6 +239,7 @@ add_library(Group_applications OBJECT
   "${SOLUTION_ROOT}/../applications/Src/pid_user.cpp"
   "${SOLUTION_ROOT}/../applications/Src/chassis_api.cpp"
   "${SOLUTION_ROOT}/../applications/Src/chassis_task.cpp"
+  "${SOLUTION_ROOT}/../applications/Src/udb.cpp"
 )
 target_include_directories(Group_applications PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>

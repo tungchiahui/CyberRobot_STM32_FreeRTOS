@@ -2,6 +2,7 @@
 #include "mg513_gmr500ppr.h"
 #include "pid_user.h"
 #include <cstdint>
+#include "udb.h"
 
 CHASSIS chassis;
 
@@ -13,14 +14,14 @@ CHASSIS chassis;
  */
 void CHASSIS::Remote_Control_Chassis_Set_Mode(void)
 {
-    if (1) //底盘正常模式
+    if(udb.rx.apply.rc.s[0] == 0 && udb.rx.apply.rc.s[1] == 0) //底盘正常模式
     {
         this->actChassis = CHASSIS_NORMAL;
     }
-//    else if (1) //底盘大陀螺模式   无云台无法实现
-//    {
-//        actChassis = CHASSIS_GYROSCOPE;
-//    }
+    else if(udb.rx.apply.rc.s[0] == 0 && udb.rx.apply.rc.s[1] == 1) //底盘大陀螺模式
+   {
+       actChassis = CHASSIS_GYROSCOPE;
+   }
 }
 
 /**
@@ -34,9 +35,9 @@ void CHASSIS::Remote_Control_Chassis_Mode(void)
     switch (actChassis)
     {
     case CHASSIS_NORMAL: //正常模式
-        // this->oriChassis.Speed.vx = (fp32)rc_ctrl.rc.ch[2]; 
-        // this->oriChassis.Speed.vy = (fp32)rc_ctrl.rc.ch[3]; 
-        // this->oriChassis.Speed.vw = -(fp32)rc_ctrl.rc.ch[4]; 
+        this->oriChassis.Speed.vx =   (fp32)udb.rx.apply.rc.ch[0]; 
+        this->oriChassis.Speed.vy =   (fp32)udb.rx.apply.rc.ch[1]; 
+        this->oriChassis.Speed.vw = - (fp32)udb.rx.apply.rc.ch[3]; 
 
         this->oriChassis.Speed.vx *= 1;
         this->oriChassis.Speed.vy *= 1;
@@ -44,13 +45,13 @@ void CHASSIS::Remote_Control_Chassis_Mode(void)
         break;
 
     case CHASSIS_GYROSCOPE: //小陀螺模式
-        // this->oriChassis.Speed.vx = (fp32)rc_ctrl.rc.ch[2];
-        // this->oriChassis.Speed.vy = (fp32)rc_ctrl.rc.ch[3];
-        // this->oriChassis.Speed.vw = -330.0f;
+        this->oriChassis.Speed.vx =   (fp32)udb.rx.apply.rc.ch[0]; 
+        this->oriChassis.Speed.vy =   (fp32)udb.rx.apply.rc.ch[1]; 
+        this->oriChassis.Speed.vw = - (fp32)udb.rx.apply.rc.ch[3]; 
 
-        this->oriChassis.Speed.vx *= 1;
-        this->oriChassis.Speed.vy *= 1;
-        this->oriChassis.Speed.vw *= 1;
+        this->oriChassis.Speed.vx *= 2;
+        this->oriChassis.Speed.vy *= 2;
+        this->oriChassis.Speed.vw *= 2;
         break;
     default:
         break;

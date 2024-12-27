@@ -84,6 +84,10 @@ project:
           misc:
             - CPP:
                 - -xc++
+        - file: ../Core/Src/usart.c
+          misc:
+            - CPP:
+                - -xc++
         - file: ../Core/Src/stm32f4xx_it.c
         - file: ../Core/Src/stm32f4xx_hal_msp.c
         - file: ../Core/Src/stm32f4xx_hal_timebase_tim.c
@@ -113,6 +117,10 @@ project:
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
+        - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
+          misc:
+            - CPP:
+                - -xc++
     - group: Drivers/CMSIS
       files:
         - file: ../Core/Src/system_stm32f4xx.c
@@ -183,6 +191,7 @@ project:
         - file: ../applications/Src/pid_user.cpp
         - file: ../applications/Src/chassis_api.cpp
         - file: ../applications/Src/chassis_task.cpp
+        - file: ../applications/Src/udb.cpp
     - group: bsp/boards
       files:
         - file: ../bsp/boards/Src/bsp_delay.cpp

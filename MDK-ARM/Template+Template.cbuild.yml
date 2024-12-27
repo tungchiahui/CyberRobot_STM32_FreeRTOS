@@ -165,6 +165,11 @@ build:
           misc:
             CPP:
               - -xc++
+        - file: ../Core/Src/usart.c
+          category: sourceC
+          misc:
+            CPP:
+              - -xc++
         - file: ../Core/Src/stm32f4xx_it.c
           category: sourceC
         - file: ../Core/Src/stm32f4xx_hal_msp.c
@@ -212,6 +217,11 @@ build:
           category: sourceC
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
           category: sourceC
+        - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
+          category: sourceC
+          misc:
+            CPP:
+              - -xc++
     - group: Drivers/CMSIS
       files:
         - file: ../Core/Src/system_stm32f4xx.c
@@ -311,6 +321,8 @@ build:
         - file: ../applications/Src/chassis_api.cpp
           category: sourceCpp
         - file: ../applications/Src/chassis_task.cpp
+          category: sourceCpp
+        - file: ../applications/Src/udb.cpp
           category: sourceCpp
     - group: bsp/boards
       files:

@@ -15,8 +15,10 @@
 # Rule for linking CXX executable.
 
 rule CXX_EXECUTABLE_LINKER__Template.2bTemplate_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && c:\Users\tung\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.23.0\bin\armlink.exe $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES $in -o $TARGET_FILE  --list=$TARGET_FILE.map && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && c:\Users\tung\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.23.0\bin\armlink.exe $LINK_FLAGS  --via=$RSP_FILE -o $TARGET_FILE  --list=$TARGET_FILE.map && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
+  rspfile = $RSP_FILE
+  rspfile_content = $in $LINK_PATH $LINK_LIBRARIES
   restat = $RESTAT
 
 
@@ -112,7 +114,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --regenerate-during-build -SC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp\Template+Template -BC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp\1
+  command = C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --regenerate-during-build -SC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp\Template+Template -BC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp\1
   description = Re-running CMake...
   generator = 1
 

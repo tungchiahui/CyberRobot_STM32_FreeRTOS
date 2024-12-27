@@ -34,7 +34,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp\
+cmake_ninja_workdir = C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp\
 
 #############################################
 # Utility command for database
@@ -45,13 +45,13 @@ build database: phony Template+Template-database
 #############################################
 # Utility command for Template+Template
 
-build Template+Template: phony CMakeFiles\Template+Template CMakeFiles\Template+Template-complete Template+Template\src\Template+Template-stamp\Template+Template-done Template+Template\src\Template+Template-stamp\Template+Template-build C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\out\Template\Template\Template.axf Template+Template\src\Template+Template-stamp\Template+Template-configure Template+Template\src\Template+Template-stamp\Template+Template-database Template+Template\src\Template+Template-stamp\Template+Template-download Template+Template\src\Template+Template-stamp\Template+Template-executes Template+Template\src\Template+Template-stamp\Template+Template-install Template+Template\src\Template+Template-stamp\Template+Template-mkdir Template+Template\src\Template+Template-stamp\Template+Template-patch Template+Template\src\Template+Template-stamp\Template+Template-test Template+Template\src\Template+Template-stamp\Template+Template-update Template+Template-build Template+Template-configure Template+Template-database Template+Template-executes
+build Template+Template: phony CMakeFiles\Template+Template CMakeFiles\Template+Template-complete Template+Template\src\Template+Template-stamp\Template+Template-done Template+Template\src\Template+Template-stamp\Template+Template-build C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\out\Template\Template\Template.axf Template+Template\src\Template+Template-stamp\Template+Template-configure Template+Template\src\Template+Template-stamp\Template+Template-database Template+Template\src\Template+Template-stamp\Template+Template-download Template+Template\src\Template+Template-stamp\Template+Template-executes Template+Template\src\Template+Template-stamp\Template+Template-install Template+Template\src\Template+Template-stamp\Template+Template-mkdir Template+Template\src\Template+Template-stamp\Template+Template-patch Template+Template\src\Template+Template-stamp\Template+Template-test Template+Template\src\Template+Template-stamp\Template+Template-update Template+Template-build Template+Template-configure Template+Template-database Template+Template-executes
 
 
 #############################################
 # Utility command for Template+Template-build
 
-build Template+Template-build: phony CMakeFiles\Template+Template-build Template+Template\src\Template+Template-stamp\Template+Template-build C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\out\Template\Template\Template.axf Template+Template\src\Template+Template-stamp\Template+Template-configure Template+Template\src\Template+Template-stamp\Template+Template-patch Template+Template\src\Template+Template-stamp\Template+Template-update Template+Template\src\Template+Template-stamp\Template+Template-download Template+Template\src\Template+Template-stamp\Template+Template-mkdir Template+Template-configure
+build Template+Template-build: phony CMakeFiles\Template+Template-build Template+Template\src\Template+Template-stamp\Template+Template-build C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\out\Template\Template\Template.axf Template+Template\src\Template+Template-stamp\Template+Template-configure Template+Template\src\Template+Template-stamp\Template+Template-patch Template+Template\src\Template+Template-stamp\Template+Template-update Template+Template\src\Template+Template-stamp\Template+Template-download Template+Template\src\Template+Template-stamp\Template+Template-mkdir Template+Template-configure
 
 
 #############################################
@@ -63,7 +63,7 @@ build Template+Template-configure: phony CMakeFiles\Template+Template-configure 
 #############################################
 # Utility command for Template+Template-executes
 
-build Template+Template-executes: phony CMakeFiles\Template+Template-executes Template+Template\src\Template+Template-stamp\Template+Template-executes Template+Template\src\Template+Template-stamp\Template+Template-build C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\out\Template\Template\Template.axf Template+Template\src\Template+Template-stamp\Template+Template-configure Template+Template\src\Template+Template-stamp\Template+Template-patch Template+Template\src\Template+Template-stamp\Template+Template-update Template+Template\src\Template+Template-stamp\Template+Template-download Template+Template\src\Template+Template-stamp\Template+Template-mkdir Template+Template-build
+build Template+Template-executes: phony CMakeFiles\Template+Template-executes Template+Template\src\Template+Template-stamp\Template+Template-executes Template+Template\src\Template+Template-stamp\Template+Template-build C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\out\Template\Template\Template.axf Template+Template\src\Template+Template-stamp\Template+Template-configure Template+Template\src\Template+Template-stamp\Template+Template-patch Template+Template\src\Template+Template-stamp\Template+Template-update Template+Template\src\Template+Template-stamp\Template+Template-download Template+Template\src\Template+Template-stamp\Template+Template-mkdir Template+Template-build
 
 
 #############################################
@@ -76,7 +76,7 @@ build Template+Template-database: phony CMakeFiles\Template+Template-database Te
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake-gui.exe -SC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp -BC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake-gui.exe -SC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp -BC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp"
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -88,7 +88,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --regenerate-during-build -SC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp -BC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --regenerate-during-build -SC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp -BC:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -106,7 +106,7 @@ build CMakeFiles\Template+Template | ${cmake_ninja_workdir}CMakeFiles\Template+T
 # Custom command for CMakeFiles\Template+Template-complete
 
 build CMakeFiles\Template+Template-complete Template+Template\src\Template+Template-stamp\Template+Template-done | ${cmake_ninja_workdir}CMakeFiles\Template+Template-complete ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-done: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-install Template+Template\src\Template+Template-stamp\Template+Template-mkdir Template+Template\src\Template+Template-stamp\Template+Template-download Template+Template\src\Template+Template-stamp\Template+Template-update Template+Template\src\Template+Template-stamp\Template+Template-patch Template+Template\src\Template+Template-stamp\Template+Template-configure Template+Template\src\Template+Template-stamp\Template+Template-build Template+Template\src\Template+Template-stamp\Template+Template-install Template+Template\src\Template+Template-stamp\Template+Template-test Template+Template\src\Template+Template-stamp\Template+Template-executes Template+Template\src\Template+Template-stamp\Template+Template-database || Template+Template-build Template+Template-configure Template+Template-database Template+Template-executes
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E make_directory C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/CMakeFiles && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/CMakeFiles/Template+Template-complete && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-done"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E make_directory C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/CMakeFiles && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/CMakeFiles/Template+Template-complete && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-done"
   DESC = Completed 'Template+Template'
   restat = 1
 
@@ -114,8 +114,8 @@ build CMakeFiles\Template+Template-complete Template+Template\src\Template+Templ
 #############################################
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-build
 
-build Template+Template\src\Template+Template-stamp\Template+Template-build C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\out\Template\Template\Template.axf | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-build: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-configure || Template+Template-configure
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp\1 && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo "Building CMake target 'Template+Template'" && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --build C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/1"
+build Template+Template\src\Template+Template-stamp\Template+Template-build C$:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\out\Template\Template\Template.axf | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-build: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-configure || Template+Template-configure
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp\1 && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo "Building CMake target 'Template+Template'" && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --build C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/1"
   DESC = Performing build step for 'Template+Template'
   pool = console
   restat = 1
@@ -125,7 +125,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-build C$:\
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-configure
 
 build Template+Template\src\Template+Template-stamp\Template+Template-configure | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-configure: CUSTOM_COMMAND Template+Template\tmp\Template+Template-cfgcmd.txt Template+Template\src\Template+Template-stamp\Template+Template-patch
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp\1 && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -P C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure-.cmake && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp\1 && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -P C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure-.cmake && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure"
   DESC = Performing configure step for 'Template+Template'
   restat = 1
 
@@ -134,7 +134,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-configure 
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-database
 
 build Template+Template\src\Template+Template-stamp\Template+Template-database | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-database: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-configure || Template+Template-configure
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -P C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-database-.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -P C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-database-.cmake"
   DESC = Performing database step for 'Template+Template'
   pool = console
 
@@ -143,7 +143,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-database |
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-download
 
 build Template+Template\src\Template+Template-stamp\Template+Template-download | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-download: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-source_dirinfo.txt Template+Template\src\Template+Template-stamp\Template+Template-mkdir
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download"
   DESC = No download step for 'Template+Template'
   restat = 1
 
@@ -152,7 +152,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-download |
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-executes
 
 build Template+Template\src\Template+Template-stamp\Template+Template-executes | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-executes: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-build || Template+Template-build Template+Template-configure
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-executes"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-executes"
   DESC = No executes step for 'Template+Template'
   restat = 1
 
@@ -161,7 +161,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-executes |
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-install
 
 build Template+Template\src\Template+Template-stamp\Template+Template-install | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-install: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-build || Template+Template-build Template+Template-configure Template+Template-database Template+Template-executes
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp\1 && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp\1 && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append"
   DESC = No install step for 'Template+Template'
 
 
@@ -169,7 +169,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-install | 
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-mkdir
 
 build Template+Template\src\Template+Template-stamp\Template+Template-mkdir | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-mkdir: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -Dcfgdir= -P C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/tmp/Template+Template-mkdirs.cmake && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -Dcfgdir= -P C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/tmp/Template+Template-mkdirs.cmake && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir"
   DESC = Creating directories for 'Template+Template'
   restat = 1
 
@@ -178,7 +178,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-mkdir | ${
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-patch
 
 build Template+Template\src\Template+Template-stamp\Template+Template-patch | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-patch: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-patch-info.txt Template+Template\src\Template+Template-stamp\Template+Template-update
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch"
   DESC = No patch step for 'Template+Template'
   restat = 1
 
@@ -187,7 +187,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-patch | ${
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-test
 
 build Template+Template\src\Template+Template-stamp\Template+Template-test | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-test: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-install || Template+Template-build Template+Template-configure Template+Template-database Template+Template-executes
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp\1 && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-test"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp\1 && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-test"
   DESC = No test step for 'Template+Template'
   restat = 1
 
@@ -196,7 +196,7 @@ build Template+Template\src\Template+Template-stamp\Template+Template-test | ${c
 # Custom command for Template+Template\src\Template+Template-stamp\Template+Template-update
 
 build Template+Template\src\Template+Template-stamp\Template+Template-update | ${cmake_ninja_workdir}Template+Template\src\Template+Template-stamp\Template+Template-update: CUSTOM_COMMAND Template+Template\src\Template+Template-stamp\Template+Template-update-info.txt Template+Template\src\Template+Template-stamp\Template+Template-download
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\Motor_Test\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\tung\UserFolder\XiaomiCloud\Work\Source\CyberNaviRobot\MCU_MainController\MDK-ARM\tmp && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\tung\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update"
   DESC = No update step for 'Template+Template'
   restat = 1
 
@@ -233,7 +233,7 @@ build CMakeFiles\Template+Template-database | ${cmake_ninja_workdir}CMakeFiles\T
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/Motor_Test/MDK-ARM/tmp
+# Folder: C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/tmp
 
 build all: phony Template+Template
 
