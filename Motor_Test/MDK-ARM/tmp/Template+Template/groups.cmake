@@ -229,6 +229,8 @@ add_library(Group_applications OBJECT
   "${SOLUTION_ROOT}/../applications/Src/mg513_gmr500ppr.cpp"
   "${SOLUTION_ROOT}/../applications/Src/pid.cpp"
   "${SOLUTION_ROOT}/../applications/Src/pid_user.cpp"
+  "${SOLUTION_ROOT}/../applications/Src/chassis_api.cpp"
+  "${SOLUTION_ROOT}/../applications/Src/chassis_task.cpp"
 )
 target_include_directories(Group_applications PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>

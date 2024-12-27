@@ -119,6 +119,13 @@ typedef struct
 class MG513_GMR500PPR
 {
 	public:
+	class Target_Cmd
+	{
+		public:
+		fp32 Speed_Motor_Target;
+		fp32 Angle_Motor_Target;
+		fp32 Pulse_Motor_Target;
+	}target;
 
 	class AT8236_Cmd
 	{
@@ -157,6 +164,9 @@ class MG513_GMR500PPR
 
 };
 
+
+
+extern MG513_GMR500PPR mg513_gmr500ppr_motor[4];
 
 #ifdef __cplusplus
 }

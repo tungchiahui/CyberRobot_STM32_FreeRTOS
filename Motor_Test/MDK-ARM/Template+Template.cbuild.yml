@@ -30,7 +30,7 @@ build:
     ASM:
       - -masm=auto
     C:
-      - -std=c99
+      - -std=c11
       - -fno-rtti
       - -funsigned-char
       - -fshort-enums
@@ -50,7 +50,7 @@ build:
       - -Wno-parentheses-equality
     CPP:
       - -xc++
-      - -std=c++11
+      - -std=c++17
       - -fno-rtti
       - -funsigned-char
       - -fshort-enums
@@ -307,6 +307,10 @@ build:
         - file: ../applications/Src/pid.cpp
           category: sourceCpp
         - file: ../applications/Src/pid_user.cpp
+          category: sourceCpp
+        - file: ../applications/Src/chassis_api.cpp
+          category: sourceCpp
+        - file: ../applications/Src/chassis_task.cpp
           category: sourceCpp
     - group: bsp/boards
       files:

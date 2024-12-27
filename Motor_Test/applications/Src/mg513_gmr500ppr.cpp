@@ -32,6 +32,9 @@ void StartDefaultTask(void const * argument)
     mg513_gmr500ppr_motor[2].encoder.Init(&motor2_encoder_htim);
     mg513_gmr500ppr_motor[3].encoder.Init(&motor3_encoder_htim);
 
+    //编码器定时器中断
+    HAL_TIM_Base_Start_IT(&htim6);
+
     //初始化电机驱动器
     mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel);
     mg513_gmr500ppr_motor[1].at8236_cmd.Init(&motor1_pwma_htim,MOTOR1_PWMA_TIM_Channel,&motor1_pwmb_htim,MOTOR1_PWMB_TIM_Channel);
@@ -41,9 +44,6 @@ void StartDefaultTask(void const * argument)
 
     //初始化PID控制器
     pid_controller.All_Device_Init();
-
-    //定时器中断
-    HAL_TIM_Base_Start_IT(&htim6);
 
     for(;;)
     {

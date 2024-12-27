@@ -1484,6 +1484,16 @@
               <FileType>8</FileType>
               <FilePath>..\applications\Src\pid_user.cpp</FilePath>
             </File>
+            <File>
+              <FileName>chassis_api.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\applications\Src\chassis_api.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>chassis_task.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\applications\Src\chassis_task.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
