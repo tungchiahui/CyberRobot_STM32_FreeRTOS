@@ -18,6 +18,10 @@ extern "C"
 #define GAP_TIME_MS           1       //采集间隔时长
 #define LPF_Q                 0.9f    //低通滤波Q系数
 
+//速度范围:0-900rpm
+//单圈角度范围:0-2000
+	
+	
 //Initialize motor speed control and, for controlling motor speed, PWM frequency 10kHz
 //初始化电机速度控制以及，用于控制电机速度，PWM频率10KHZ
 //APB2时钟频率为168M，满PWM为16799，频率=168M/((16799+1)*(0+1))=10k
@@ -26,6 +30,8 @@ extern "C"
 	
 	
 //电机驱动板AT8236对应的定时器
+//TIM1  APB2
+//TIM9  APB2
 //TIM10 APB2
 //TIM11 APB2
 #define MOTOR0_PWMA_TIM_BASE      	 TIM10
@@ -36,6 +42,32 @@ extern "C"
 #define MOTOR0_PWMB_TIM_Channel    	 TIM_CHANNEL_1
 #define motor0_pwmb_htim    		 htim11
 
+
+#define MOTOR1_PWMA_TIM_BASE      	 TIM9
+#define MOTOR1_PWMA_TIM_Channel    	 TIM_CHANNEL_1
+#define motor1_pwma_htim    		 htim9
+
+#define MOTOR1_PWMB_TIM_BASE      	 TIM9
+#define MOTOR1_PWMB_TIM_Channel    	 TIM_CHANNEL_2
+#define motor1_pwmb_htim    		 htim9
+
+
+#define MOTOR2_PWMA_TIM_BASE      	 TIM1
+#define MOTOR2_PWMA_TIM_Channel    	 TIM_CHANNEL_1
+#define motor2_pwma_htim    		 htim1
+
+#define MOTOR2_PWMB_TIM_BASE      	 TIM1
+#define MOTOR2_PWMB_TIM_Channel    	 TIM_CHANNEL_2
+#define motor2_pwmb_htim    		 htim1
+
+
+#define MOTOR3_PWMA_TIM_BASE      	 TIM1
+#define MOTOR3_PWMA_TIM_Channel    	 TIM_CHANNEL_3
+#define motor3_pwma_htim    		 htim1
+
+#define MOTOR3_PWMB_TIM_BASE      	 TIM1
+#define MOTOR3_PWMB_TIM_Channel    	 TIM_CHANNEL_4
+#define motor3_pwmb_htim    		 htim1
 
 
 //电机编码器对应的定时器
@@ -100,7 +132,7 @@ class MG513_GMR500PPR
 		int max_pulse;
 
 		void Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Channel_a,TIM_HandleTypeDef *htim_b,uint32_t TIM_Channel_b);
-		void PWM_Pulse_CMD(int pulse);
+		void PWM_Pulse_CMD(int inv_pulse);
 		
 	}at8236_cmd;
 
@@ -108,6 +140,11 @@ class MG513_GMR500PPR
 	{
 		public:
 		TIM_HandleTypeDef *htim_encoder;
+		
+		//motor_message_filtering函数要用到的变量
+		uint8_t bubble_sort_number = 0;
+		uint8_t time_count = 0;
+		fp32 speed_arr[10] = {0.0f};
 
 		volatile int32_t motor_encoder_count;   //溢出次数
 		Encoder_TypeDef encoder_data;
@@ -121,10 +158,6 @@ class MG513_GMR500PPR
 	}encoder;
 
 };
-
-
-int32_t get_encoder_value(void);
-void motor_message_filtering(Encoder_TypeDef *encoder,Motor_TypeDef *motor,fp32 q,uint8_t ms);
 
 
 #ifdef __cplusplus

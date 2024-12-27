@@ -1474,6 +1474,16 @@
               <FileType>8</FileType>
               <FilePath>..\applications\Src\mg513_gmr500ppr.cpp</FilePath>
             </File>
+            <File>
+              <FileName>pid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\applications\Src\pid.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>pid_user.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\applications\Src\pid_user.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

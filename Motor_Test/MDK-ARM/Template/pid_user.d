@@ -1,5 +1,5 @@
-template/mg513_gmr500ppr.o: ..\applications\Src\mg513_gmr500ppr.cpp \
-  ..\applications\Inc\mg513_gmr500ppr.h ..\Core\Inc\startup_main.h \
+template/pid_user.o: ..\applications\Src\pid_user.cpp \
+  ..\applications\Inc\pid_user.h ..\Core\Inc\startup_main.h \
   ..\Core\Inc\main.h ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
@@ -38,5 +38,5 @@ template/mg513_gmr500ppr.o: ..\applications\Src\mg513_gmr500ppr.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\Core\Inc\tim.h ..\applications\Inc\pid_user.h \
-  ..\applications\Inc\pid.h
+  ..\applications\Inc\pid.h ..\applications\Inc\mg513_gmr500ppr.h \
+  ..\Core\Inc\tim.h

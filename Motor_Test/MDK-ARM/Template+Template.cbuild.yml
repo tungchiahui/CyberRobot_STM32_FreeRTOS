@@ -304,6 +304,10 @@ build:
       files:
         - file: ../applications/Src/mg513_gmr500ppr.cpp
           category: sourceCpp
+        - file: ../applications/Src/pid.cpp
+          category: sourceCpp
+        - file: ../applications/Src/pid_user.cpp
+          category: sourceCpp
     - group: bsp/boards
       files:
         - file: ../bsp/boards/Src/bsp_delay.cpp

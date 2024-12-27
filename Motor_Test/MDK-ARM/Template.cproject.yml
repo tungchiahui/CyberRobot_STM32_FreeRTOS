@@ -179,6 +179,8 @@ project:
     - group: applications
       files:
         - file: ../applications/Src/mg513_gmr500ppr.cpp
+        - file: ../applications/Src/pid.cpp
+        - file: ../applications/Src/pid_user.cpp
     - group: bsp/boards
       files:
         - file: ../bsp/boards/Src/bsp_delay.cpp

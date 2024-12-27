@@ -227,6 +227,8 @@ set_source_files_properties("${SOLUTION_ROOT}/../Middlewares/Third_Party/FreeRTO
 # group applications
 add_library(Group_applications OBJECT
   "${SOLUTION_ROOT}/../applications/Src/mg513_gmr500ppr.cpp"
+  "${SOLUTION_ROOT}/../applications/Src/pid.cpp"
+  "${SOLUTION_ROOT}/../applications/Src/pid_user.cpp"
 )
 target_include_directories(Group_applications PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>

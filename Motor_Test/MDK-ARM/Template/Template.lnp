@@ -35,6 +35,8 @@
 "template\heap_4.o"
 "template\port.o"
 "template\mg513_gmr500ppr.o"
+"template\pid.o"
+"template\pid_user.o"
 "template\bsp_delay.o"
 --strict --scatter "Template\Template.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

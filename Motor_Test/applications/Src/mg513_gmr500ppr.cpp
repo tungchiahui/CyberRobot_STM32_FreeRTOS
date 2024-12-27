@@ -4,10 +4,10 @@
 #include "stm32f407xx.h"
 #include "stm32f4xx_hal_tim.h"
 #include "tim.h"
+#include "pid_user.h"
 
 
 MG513_GMR500PPR mg513_gmr500ppr_motor[4];
-int maxccr[4];
 
 
 #define LimitMax(input, max)   \
@@ -28,16 +28,40 @@ void StartDefaultTask(void const * argument)
 {
     //初始化编码器
     mg513_gmr500ppr_motor[0].encoder.Init(&motor0_encoder_htim);
+    mg513_gmr500ppr_motor[1].encoder.Init(&motor1_encoder_htim);
+    mg513_gmr500ppr_motor[2].encoder.Init(&motor2_encoder_htim);
+    mg513_gmr500ppr_motor[3].encoder.Init(&motor3_encoder_htim);
 
     //初始化电机驱动器
     mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel);
+    mg513_gmr500ppr_motor[1].at8236_cmd.Init(&motor1_pwma_htim,MOTOR1_PWMA_TIM_Channel,&motor1_pwmb_htim,MOTOR1_PWMB_TIM_Channel);
+    mg513_gmr500ppr_motor[2].at8236_cmd.Init(&motor2_pwma_htim,MOTOR2_PWMA_TIM_Channel,&motor2_pwmb_htim,MOTOR2_PWMB_TIM_Channel);
+    mg513_gmr500ppr_motor[3].at8236_cmd.Init(&motor3_pwma_htim,MOTOR3_PWMA_TIM_Channel,&motor3_pwmb_htim,MOTOR3_PWMB_TIM_Channel);
+
+
+    //初始化PID控制器
+    pid_controller.All_Device_Init();
 
     //定时器中断
     HAL_TIM_Base_Start_IT(&htim6);
 
     for(;;)
     {
+//        mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(100,0));
         mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(3000);
+//			mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,0));
+
+//        mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(100,1));
+        mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(3000);
+//			mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,1));
+//
+//        mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(100,2));
+        mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(3000);
+//			mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,2));
+
+//        mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(100,3));
+        mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(3000);
+//			mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,3));
         osDelay(1);
     }
 }
@@ -60,6 +84,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
 
     /* 电机编码器 */
+		//电机0
 	if(htim->Instance == MOTOR0_ENCODER_TIM_BASE)
 	{
 		if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&motor0_encoder_htim) == 1)                   /* 判断CR1的DIR位 */
@@ -71,11 +96,52 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			mg513_gmr500ppr_motor[0].encoder.motor_encoder_count++;                          /* DIR位为0，也就是递增计数 */
 		}
 	}
+		//电机1
+		if(htim->Instance == MOTOR1_ENCODER_TIM_BASE)
+	{
+		if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&motor1_encoder_htim) == 1)                   /* 判断CR1的DIR位 */
+		{
+			mg513_gmr500ppr_motor[1].encoder.motor_encoder_count--;                           /* DIR位为1，也就是递减计数 */
+		}
+		else
+		{
+			mg513_gmr500ppr_motor[1].encoder.motor_encoder_count++;                          /* DIR位为0，也就是递增计数 */
+		}
+	}
+	
+		//电机2
+		if(htim->Instance == MOTOR2_ENCODER_TIM_BASE)
+	{
+		if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&motor2_encoder_htim) == 1)                   /* 判断CR1的DIR位 */
+		{
+			mg513_gmr500ppr_motor[2].encoder.motor_encoder_count--;                           /* DIR位为1，也就是递减计数 */
+		}
+		else
+		{
+			mg513_gmr500ppr_motor[2].encoder.motor_encoder_count++;                          /* DIR位为0，也就是递增计数 */
+		}
+	}
+	
+		//电机3
+		if(htim->Instance == MOTOR3_ENCODER_TIM_BASE)
+	{
+		if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&motor3_encoder_htim) == 1)                   /* 判断CR1的DIR位 */
+		{
+			mg513_gmr500ppr_motor[3].encoder.motor_encoder_count--;                           /* DIR位为1，也就是递减计数 */
+		}
+		else
+		{
+			mg513_gmr500ppr_motor[3].encoder.motor_encoder_count++;                          /* DIR位为0，也就是递增计数 */
+		}
+	}
 
     /* 电机编码器运行中断 */
 	if(htim->Instance == TIM6)
 	{
 	    mg513_gmr500ppr_motor[0].encoder.get_finall_encoder_value(&motor0_encoder_htim);
+	    mg513_gmr500ppr_motor[1].encoder.get_finall_encoder_value(&motor1_encoder_htim);
+	    mg513_gmr500ppr_motor[2].encoder.get_finall_encoder_value(&motor2_encoder_htim);
+	    mg513_gmr500ppr_motor[3].encoder.get_finall_encoder_value(&motor3_encoder_htim);
 	}
 }
 
@@ -106,9 +172,6 @@ void MG513_GMR500PPR::AT8236_Cmd::Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Ch
     {
         this->max_pulse = htim_b->Init.Period;  //最大重装载数
     }
-    
-
-
 
     HAL_TIM_PWM_Start(htim_a,TIM_Channel_a);
     HAL_TIM_PWM_Start(htim_b,TIM_Channel_b);
@@ -121,21 +184,23 @@ void MG513_GMR500PPR::AT8236_Cmd::Init(TIM_HandleTypeDef *htim_a,uint32_t TIM_Ch
  * @param       无
  * @retval      编码器值
  */
-void MG513_GMR500PPR::AT8236_Cmd::PWM_Pulse_CMD(int pulse)
+void MG513_GMR500PPR::AT8236_Cmd::PWM_Pulse_CMD(int inv_pulse)
 {
-    int32_t abs_pulse = abs(pulse);
+    int32_t abs_pulse = abs(inv_pulse);
     LimitMax(abs_pulse,this->max_pulse);
+	int32_t pulse = this->max_pulse - abs_pulse;
 
-//满衰减
-    if(pulse > 0)   //正转
+//慢衰减
+//转子方向顺时针旋转为正
+	  if(inv_pulse > 0)   //正转
+    {
+        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,pulse);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,this->max_pulse);
+    }
+    else if(inv_pulse < 0)   //反转
     {
         __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,this->max_pulse);
-        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,abs_pulse);
-    }
-    else if(pulse < 0)   //反转
-    {
-        __HAL_TIM_SetCompare(this->htim_pwma,this->TIM_Channel_Pwma,abs_pulse);
-        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,this->max_pulse);
+        __HAL_TIM_SetCompare(this->htim_pwmb,this->TIM_Channel_Pwmb,pulse);
     }
     else  //制动
     {
@@ -151,7 +216,7 @@ void MG513_GMR500PPR::Encoder::Init(TIM_HandleTypeDef *htim)
     this->htim_encoder = htim;
 
     HAL_TIM_Encoder_Start_IT(htim_encoder,TIM_CHANNEL_1);
-	HAL_TIM_Encoder_Start_IT(htim_encoder,TIM_CHANNEL_2);
+	  HAL_TIM_Encoder_Start_IT(htim_encoder,TIM_CHANNEL_2);
 
 }
 
@@ -189,14 +254,14 @@ void MG513_GMR500PPR::Encoder::motor_message_filtering(Encoder_TypeDef *encoder,
 {
 	   //冒泡排序法
     uint8_t i = 0, j = 0;
-		static uint8_t bubble_sort_number = 0;
+//	static uint8_t bubble_sort_number = 0;
 		//缓存，充当冒泡排序法的交换缓存和冒泡排序法处理后的速度总和缓存
     fp32 temp = 0.0f;
 	
-    static uint8_t time_count = 0;
-    static fp32 speed_arr[10] = {0.0f};                     /* 存储速度进行滤波运算 */
+//    static uint8_t time_count = 0;
+//    static fp32 speed_arr[10] = {0.0f};                     /* 存储速度进行滤波运算 */
 
-    if (time_count == ms)                                     /* 计算一次速度 */
+    if (this->time_count == ms)                                     /* 计算一次速度 */
     {
         /* 计算电机转速 
            第一步 ：计算ms毫秒内计数变化量
@@ -211,22 +276,22 @@ void MG513_GMR500PPR::Encoder::motor_message_filtering(Encoder_TypeDef *encoder,
 				encoder->encoder_delta = 0.0f;
 			}
         encoder->encoder_delta_sum += encoder->encoder_delta;
-        speed_arr[bubble_sort_number++] = (fp32)(encoder->encoder_delta * ((1000 / ms) * 60.0) / (FRE_DOU_RATIO) / (PULSE_PER_REVOLUTION));    /* 保存电机转速 */
+        this->speed_arr[this->bubble_sort_number++] = (fp32)(encoder->encoder_delta * ((1000 / ms) * 60.0) / (FRE_DOU_RATIO) / (PULSE_PER_REVOLUTION));    /* 保存电机转速 */
         
         encoder->encoder_pre = encoder->encoder_now;          /* 保存当前编码器的值 */
 
         /* 累计10次速度值，后续进行滤波*/
-        if (bubble_sort_number == 10)
+        if (this->bubble_sort_number == 10)
         {
             for (i = 10; i >= 1; i--)                       /* 冒泡排序*/
             {
                 for (j = 0; j < (i - 1); j++) 
                 {
-                    if (speed_arr[j] > speed_arr[j + 1])    /* 数值比较 */
+                    if (this->speed_arr[j] > this->speed_arr[j + 1])    /* 数值比较 */
                     { 
-                        temp = speed_arr[j];                /* 数值换位 */
-                        speed_arr[j] = speed_arr[j + 1];
-                        speed_arr[j + 1] = temp;
+                        temp = this->speed_arr[j];                /* 数值换位 */
+                        this->speed_arr[j] = this->speed_arr[j + 1];
+                        this->speed_arr[j + 1] = temp;
                     }
                 }
             }
@@ -235,7 +300,7 @@ void MG513_GMR500PPR::Encoder::motor_message_filtering(Encoder_TypeDef *encoder,
             
             for (i = 2; i < 8; i++)                         /* 去除两边高低数据 */
             {
-                temp += speed_arr[i];                       /* 将中间数值累加 */
+                temp += this->speed_arr[i];                       /* 将中间数值累加 */
             }
             
             temp = (fp32)(temp / 6);                       /*求速度平均值*/
@@ -254,9 +319,9 @@ void MG513_GMR500PPR::Encoder::motor_message_filtering(Encoder_TypeDef *encoder,
 						motor->rotor_round_cnt = motor->rotor_position / (FRE_DOU_RATIO) / (PULSE_PER_REVOLUTION);
 						motor->motor_round_cnt = motor->rotor_round_cnt / (REDUCTION_RATIO);  //计算减速后电机转轴的圈数
 							
-            bubble_sort_number = 0;
+            this->bubble_sort_number = 0;
         }
-        time_count = 0;
+        this->time_count = 0;
     }
-    time_count ++;
+    this->time_count ++;
 }
