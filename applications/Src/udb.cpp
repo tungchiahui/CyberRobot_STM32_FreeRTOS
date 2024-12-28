@@ -18,6 +18,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 }
 
 
+uint8_t buffer[UDB_RX_TOTAL_SIZE + 3];
 bool UDB::RX::Data_Apply(void)
 {
 /*  可使用的数据
@@ -28,43 +29,48 @@ bool UDB::RX::Data_Apply(void)
 	this->data.fp32_buffer[i];
 */
 
-  this->apply.rc.s[0] = this->data.bool_buffer[0];
-  this->apply.rc.s[1] = this->data.bool_buffer[1];
+//  this->apply.rc.s[0] = this->data.bool_buffer[0];
+//  this->apply.rc.s[1] = this->data.bool_buffer[1];
 
-	this->apply.rc.ch[0] = this->data.int16_buffer[0];
-	this->apply.rc.ch[1] = this->data.int16_buffer[1];
-	this->apply.rc.ch[2] = this->data.int16_buffer[2];
-	this->apply.rc.ch[3] = this->data.int16_buffer[3];
+//	this->apply.rc.ch[0] = this->data.int16_buffer[0];
+//	this->apply.rc.ch[1] = this->data.int16_buffer[1];
+//	this->apply.rc.ch[2] = this->data.int16_buffer[2];
+//	this->apply.rc.ch[3] = this->data.int16_buffer[3];
+	
+	for(int16_t i = 0;i < UDB_RX_TOTAL_SIZE + 3;i++)
+	{
+		buffer[i] = this->data.buffer[i];
+	}
+	
+	this->apply.rc.ch[0] = udb.convert.Bytes2Short(this->data.buffer[3],this->data.buffer[2]);
+	this->apply.rc.ch[1] = udb.convert.Bytes2Short(this->data.buffer[5],this->data.buffer[4]);
+	this->apply.rc.ch[2] = udb.convert.Bytes2Short(this->data.buffer[7],this->data.buffer[6]);
+	this->apply.rc.ch[3] = udb.convert.Bytes2Short(this->data.buffer[9],this->data.buffer[8]);
 
 	return true;
 }
 
-uint8_t SUMCRC_FLAG;
-uint8_t buffer[7];
-int16_t rx_cnt;
-uint8_t finded_flag;
 
 bool UDB::RX::Data_Analysis(uint8_t *msg_data,int16_t bool_num,int16_t int8_num,int16_t int16_num,int16_t int32_num,int16_t fp32_num,int16_t total_size)
 {
-//	static uint8_t SUMCRC_FLAG;
-//	static uint8_t buffer[7];
-//	static int16_t rx_cnt;
-//	static uint8_t finded_flag;
+	static uint8_t SUMCRC_FLAG;
+	static int16_t rx_cnt;
+	static uint8_t finded_flag;
 	if(*msg_data == 0xA5)
 	{
 		finded_flag = 1;
 	}
 	if(finded_flag == 1)
 	{
-		buffer[rx_cnt++] = *msg_data;
+		this->data.buffer[rx_cnt++] = *msg_data;
 		if((rx_cnt == (total_size+3)))
 		{
 			finded_flag = 0;
 			rx_cnt = 0;
-			SUMCRC_FLAG = udb.checksum.__SUMCRC(buffer+1,total_size);
-			if((buffer[total_size+2] == 0x5A)&&(SUMCRC_FLAG == buffer[total_size+1]))
+			SUMCRC_FLAG = udb.checksum.__SUMCRC(this->data.buffer+1,total_size);
+			if((this->data.buffer[total_size+2] == 0x5A)&&(SUMCRC_FLAG == this->data.buffer[total_size+1]))
 			{
-				this->Buffer_Sep();   //将数据分离
+//				this->Buffer_Sep();   //将数据分离
 				this->Data_Apply();   //给于数据实际意义
 				return true;
 			}
@@ -79,47 +85,48 @@ bool UDB::RX::Buffer_Sep(void)
     uint8_t *ptr = this->data.buffer;
 
 	// 解析 bool
-    for (int i = 0; i < UDB_RX_BOOL_NUM; ++i) 
-	{
-        this->data.bool_buffer[i] = (*ptr & (1 << (i % 8))) != 0;
-        if (i % 8 == 7) 
+		for (int i = 0; i < UDB_RX_BOOL_NUM; ++i) 
 		{
-            ++ptr;  // 每8个布尔值后移动到下一个字节
-        }
-    }
+			this->data.bool_buffer[i] = (*ptr & (1 << (i % 8))) != 0;
+			if (i % 8 == 7 || i == UDB_RX_BOOL_NUM - 1) 
+				{
+					++ptr; // 每8个布尔值或到最后一个布尔值时，移动到下一个字节
+				}
+		}
+
 
 	// 解析 int8_t
     for (int i = 0; i < UDB_RX_INT8_NUM; ++i) 
 	{
-        this->data.int8_buffer[i] = *reinterpret_cast<int8_t*>(ptr);
+        this->data.int8_buffer[i] = static_cast<int8_t>(*ptr);
         ptr += sizeof(int8_t);
     }
     
     // 解析 int16_t
     for (int i = 0; i < UDB_RX_INT16_NUM; ++i) 
 	{
+		    uint8_t DL = *ptr++;
         uint8_t DH = *ptr++;
-        uint8_t DL = *ptr++;
         this->data.int16_buffer[i] = udb.convert.Bytes2Short(DH, DL);
     }
     
     // 解析 int32_t
     for (int i = 0; i < UDB_RX_INT32_NUM; ++i) 
 	{
-        uint8_t DH = *ptr++;
-        uint8_t D2 = *ptr++;
-        uint8_t D3 = *ptr++;
         uint8_t DL = *ptr++;
+        uint8_t D3 = *ptr++;
+        uint8_t D2 = *ptr++;
+        uint8_t DH = *ptr++;
         this->data.int32_buffer[i] = udb.convert.Bytes2Int(DH, D2, D3, DL);
     }
     
     // 解析 fp32
     for (int i = 0; i < UDB_RX_FP32_NUM; ++i) 
 	{
-        uint8_t DH = *ptr++;
-        uint8_t D2 = *ptr++;
-        uint8_t D3 = *ptr++;
         uint8_t DL = *ptr++;
+        uint8_t D3 = *ptr++;
+        uint8_t D2 = *ptr++;
+        uint8_t DH = *ptr++;
         this->data.fp32_buffer[i] = udb.convert.Bytes2Fp32(DH, D2, D3, DL);
     }
 

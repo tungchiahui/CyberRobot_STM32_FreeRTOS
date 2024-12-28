@@ -38,15 +38,15 @@ void CHASSIS::Remote_Control_Chassis_Mode(void)
     case CHASSIS_NORMAL: //正常模式
         this->oriChassis.Speed.vx =   (fp32)udb.rx.apply.rc.ch[0]; 
         this->oriChassis.Speed.vy =   (fp32)udb.rx.apply.rc.ch[1]; 
-        this->oriChassis.Speed.vw = - (fp32)udb.rx.apply.rc.ch[3]; 
+        this->oriChassis.Speed.vw = - (fp32)udb.rx.apply.rc.ch[2]; 
 
 //        this->oriChassis.Speed.vx =   (fp32)200; 
 //        this->oriChassis.Speed.vy =   (fp32)0; 
 //        this->oriChassis.Speed.vw = - (fp32)0; 
 		
-        this->oriChassis.Speed.vx *= 1;
-        this->oriChassis.Speed.vy *= 1;
-        this->oriChassis.Speed.vw *= 1;
+        this->oriChassis.Speed.vx *= 0.3f;
+        this->oriChassis.Speed.vy *= 0.3f;
+        this->oriChassis.Speed.vw *= 0.3f;
         break;
 
     case CHASSIS_GYROSCOPE: //小陀螺模式
