@@ -14,14 +14,15 @@ CHASSIS chassis;
  */
 void CHASSIS::Remote_Control_Chassis_Set_Mode(void)
 {
-    if(udb.rx.apply.rc.s[0] == 0 && udb.rx.apply.rc.s[1] == 0) //底盘正常模式
+    if(udb.rx.apply.rc.s[0] == false && udb.rx.apply.rc.s[1] == false) //底盘正常模式
     {
         this->actChassis = CHASSIS_NORMAL;
     }
-    else if(udb.rx.apply.rc.s[0] == 0 && udb.rx.apply.rc.s[1] == 1) //底盘大陀螺模式
+    else if(udb.rx.apply.rc.s[0] == false && udb.rx.apply.rc.s[1] == true) //底盘大陀螺模式
    {
        actChassis = CHASSIS_GYROSCOPE;
    }
+	 this->actChassis = CHASSIS_NORMAL;
 }
 
 /**
@@ -39,6 +40,10 @@ void CHASSIS::Remote_Control_Chassis_Mode(void)
         this->oriChassis.Speed.vy =   (fp32)udb.rx.apply.rc.ch[1]; 
         this->oriChassis.Speed.vw = - (fp32)udb.rx.apply.rc.ch[3]; 
 
+//        this->oriChassis.Speed.vx =   (fp32)200; 
+//        this->oriChassis.Speed.vy =   (fp32)0; 
+//        this->oriChassis.Speed.vw = - (fp32)0; 
+		
         this->oriChassis.Speed.vx *= 1;
         this->oriChassis.Speed.vy *= 1;
         this->oriChassis.Speed.vw *= 1;
@@ -100,15 +105,15 @@ void CHASSIS::Chassis_Kinematics_Calc(void)
 {
     /*	O型： */
     // mg513_gmr500ppr_motor[0].target.Speed_Motor_Target =   this->oriChassis.Speed.vy + this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
-    // mg513_gmr500ppr_motor[1].target.Speed_Motor_Target = - this->oriChassis.Speed.vy + this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
+    // mg513_gmr500ppr_motor[1].target.Speed_Motor_Target =   this->oriChassis.Speed.vy - this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
     // mg513_gmr500ppr_motor[2].target.Speed_Motor_Target = - this->oriChassis.Speed.vy - this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
-    // mg513_gmr500ppr_motor[3].target.Speed_Motor_Target =   this->oriChassis.Speed.vy - this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
+    // mg513_gmr500ppr_motor[3].target.Speed_Motor_Target = - this->oriChassis.Speed.vy + this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
 
     /*  X型:   */
-    mg513_gmr500ppr_motor[0].target.Speed_Motor_Target =   this->oriChassis.Speed.vy + this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
-    mg513_gmr500ppr_motor[1].target.Speed_Motor_Target = - this->oriChassis.Speed.vy + this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
-    mg513_gmr500ppr_motor[2].target.Speed_Motor_Target = - this->oriChassis.Speed.vy - this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
-    mg513_gmr500ppr_motor[3].target.Speed_Motor_Target =   this->oriChassis.Speed.vy - this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
+    mg513_gmr500ppr_motor[0].target.Speed_Motor_Target =   this->oriChassis.Speed.vy - this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
+    mg513_gmr500ppr_motor[1].target.Speed_Motor_Target =   this->oriChassis.Speed.vy + this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
+    mg513_gmr500ppr_motor[2].target.Speed_Motor_Target = - this->oriChassis.Speed.vy + this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
+    mg513_gmr500ppr_motor[3].target.Speed_Motor_Target = - this->oriChassis.Speed.vy - this->oriChassis.Speed.vx + this->oriChassis.Speed.vw * (Half_X_Track_Width + Half_Y_Track_Width);
 
 }
 
@@ -116,7 +121,7 @@ void CHASSIS::Chassis_Kinematics_Calc(void)
  * @brief  底盘电机输出
  * @param  void
  * @retval void
- * @attention
+ * @attention	
  */
 void CHASSIS::Chassis_Loop_Out(void)
 {

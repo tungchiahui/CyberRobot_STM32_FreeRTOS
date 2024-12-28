@@ -22,10 +22,10 @@ void chassis_task(void const * argument)
     HAL_TIM_Base_Start_IT(&htim6);
 
     //初始化电机驱动器
-    mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel);
-    mg513_gmr500ppr_motor[1].at8236_cmd.Init(&motor1_pwma_htim,MOTOR1_PWMA_TIM_Channel,&motor1_pwmb_htim,MOTOR1_PWMB_TIM_Channel);
-    mg513_gmr500ppr_motor[2].at8236_cmd.Init(&motor2_pwma_htim,MOTOR2_PWMA_TIM_Channel,&motor2_pwmb_htim,MOTOR2_PWMB_TIM_Channel);
-    mg513_gmr500ppr_motor[3].at8236_cmd.Init(&motor3_pwma_htim,MOTOR3_PWMA_TIM_Channel,&motor3_pwmb_htim,MOTOR3_PWMB_TIM_Channel);
+//    mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel);
+//    mg513_gmr500ppr_motor[1].at8236_cmd.Init(&motor1_pwma_htim,MOTOR1_PWMA_TIM_Channel,&motor1_pwmb_htim,MOTOR1_PWMB_TIM_Channel);
+//    mg513_gmr500ppr_motor[2].at8236_cmd.Init(&motor2_pwma_htim,MOTOR2_PWMA_TIM_Channel,&motor2_pwmb_htim,MOTOR2_PWMB_TIM_Channel);
+//    mg513_gmr500ppr_motor[3].at8236_cmd.Init(&motor3_pwma_htim,MOTOR3_PWMA_TIM_Channel,&motor3_pwmb_htim,MOTOR3_PWMB_TIM_Channel);
 
 
     //初始化PID控制器

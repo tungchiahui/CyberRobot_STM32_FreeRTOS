@@ -23,48 +23,48 @@ MG513_GMR500PPR mg513_gmr500ppr_motor[4];
     }
 
 
-extern "C"
-void StartDefaultTask(void const * argument)
-{
-    //初始化编码器
-    mg513_gmr500ppr_motor[0].encoder.Init(&motor0_encoder_htim);
-    mg513_gmr500ppr_motor[1].encoder.Init(&motor1_encoder_htim);
-    mg513_gmr500ppr_motor[2].encoder.Init(&motor2_encoder_htim);
-    mg513_gmr500ppr_motor[3].encoder.Init(&motor3_encoder_htim);
+//extern "C"
+//void StartDefaultTask(void const * argument)
+//{
+//    //初始化编码器
+//    mg513_gmr500ppr_motor[0].encoder.Init(&motor0_encoder_htim);
+//    mg513_gmr500ppr_motor[1].encoder.Init(&motor1_encoder_htim);
+//    mg513_gmr500ppr_motor[2].encoder.Init(&motor2_encoder_htim);
+//    mg513_gmr500ppr_motor[3].encoder.Init(&motor3_encoder_htim);
 
-    //编码器定时器中断
-    HAL_TIM_Base_Start_IT(&htim6);
+//    //编码器定时器中断
+//    HAL_TIM_Base_Start_IT(&htim6);
 
-    //初始化电机驱动器
-    mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel);
-    mg513_gmr500ppr_motor[1].at8236_cmd.Init(&motor1_pwma_htim,MOTOR1_PWMA_TIM_Channel,&motor1_pwmb_htim,MOTOR1_PWMB_TIM_Channel);
-    mg513_gmr500ppr_motor[2].at8236_cmd.Init(&motor2_pwma_htim,MOTOR2_PWMA_TIM_Channel,&motor2_pwmb_htim,MOTOR2_PWMB_TIM_Channel);
-    mg513_gmr500ppr_motor[3].at8236_cmd.Init(&motor3_pwma_htim,MOTOR3_PWMA_TIM_Channel,&motor3_pwmb_htim,MOTOR3_PWMB_TIM_Channel);
+//    //初始化电机驱动器
+//    mg513_gmr500ppr_motor[0].at8236_cmd.Init(&motor0_pwma_htim,MOTOR0_PWMA_TIM_Channel,&motor0_pwmb_htim,MOTOR0_PWMB_TIM_Channel);
+//    mg513_gmr500ppr_motor[1].at8236_cmd.Init(&motor1_pwma_htim,MOTOR1_PWMA_TIM_Channel,&motor1_pwmb_htim,MOTOR1_PWMB_TIM_Channel);
+//    mg513_gmr500ppr_motor[2].at8236_cmd.Init(&motor2_pwma_htim,MOTOR2_PWMA_TIM_Channel,&motor2_pwmb_htim,MOTOR2_PWMB_TIM_Channel);
+//    mg513_gmr500ppr_motor[3].at8236_cmd.Init(&motor3_pwma_htim,MOTOR3_PWMA_TIM_Channel,&motor3_pwmb_htim,MOTOR3_PWMB_TIM_Channel);
 
 
-    //初始化PID控制器
-    pid_controller.All_Device_Init();
+//    //初始化PID控制器
+//    pid_controller.All_Device_Init();
 
-    for(;;)
-    {
-       mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,0));
-        // mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(3000);
-//			mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,0));
+//    for(;;)
+//    {
+//       mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,0));
+//        // mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(3000);
+////			mg513_gmr500ppr_motor[0].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,0));
 
-       mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,1));
-        // mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(3000);
-//			mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,1));
-//
-       mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,2));
-        // mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(3000);
-//			mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,2));
+//       mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,1));
+//        // mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(3000);
+////			mg513_gmr500ppr_motor[1].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,1));
+////
+//       mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,2));
+//        // mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(3000);
+////			mg513_gmr500ppr_motor[2].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,2));
 
-       mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,3));
-        // mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(3000);
-//			mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,3));
-        osDelay(1);
-    }
-}
+//       mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.Velocity_Realize(-100,3));
+//        // mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(3000);
+////			mg513_gmr500ppr_motor[3].at8236_cmd.PWM_Pulse_CMD(pid_controller.motor.VP_Dual_Loop_Realize(-6000,3));
+//        osDelay(1);
+//    }
+//}
 
 
 

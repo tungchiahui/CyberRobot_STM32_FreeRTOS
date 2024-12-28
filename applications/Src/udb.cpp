@@ -39,14 +39,17 @@ bool UDB::RX::Data_Apply(void)
 	return true;
 }
 
-
+uint8_t SUMCRC_FLAG;
+uint8_t buffer[7];
+int16_t rx_cnt;
+uint8_t finded_flag;
 
 bool UDB::RX::Data_Analysis(uint8_t *msg_data,int16_t bool_num,int16_t int8_num,int16_t int16_num,int16_t int32_num,int16_t fp32_num,int16_t total_size)
 {
-	static uint8_t SUMCRC_FLAG;
-	static uint8_t buffer[7];
-	static int16_t rx_cnt;
-	static uint8_t finded_flag;
+//	static uint8_t SUMCRC_FLAG;
+//	static uint8_t buffer[7];
+//	static int16_t rx_cnt;
+//	static uint8_t finded_flag;
 	if(*msg_data == 0xA5)
 	{
 		finded_flag = 1;
