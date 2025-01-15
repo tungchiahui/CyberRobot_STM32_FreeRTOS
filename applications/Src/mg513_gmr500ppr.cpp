@@ -6,6 +6,7 @@
 #include "tim.h"
 #include "pid_user.h"
 
+#include "mpu6050.h"
 
 MG513_GMR500PPR mg513_gmr500ppr_motor[4];
 
@@ -82,6 +83,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     {
     HAL_IncTick();
     }
+		
+		//陀螺仪
+		if (htim->Instance == TIM6) 
+		{
+			mpu6050.Get.All();
+		}
+		
 
     /* 电机编码器 */
 		//电机0

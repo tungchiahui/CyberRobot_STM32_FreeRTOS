@@ -4,6 +4,7 @@
 "template\main.o"
 "template\gpio.o"
 "template\freertos.o"
+"template\i2c.o"
 "template\tim.o"
 "template\usart.o"
 "template\stm32f4xx_it.o"
@@ -24,6 +25,8 @@
 "template\stm32f4xx_hal_cortex.o"
 "template\stm32f4xx_hal.o"
 "template\stm32f4xx_hal_exti.o"
+"template\stm32f4xx_hal_i2c.o"
+"template\stm32f4xx_hal_i2c_ex.o"
 "template\stm32f4xx_hal_uart.o"
 "template\system_stm32f4xx.o"
 "template\croutine.o"
@@ -43,6 +46,11 @@
 "template\chassis_task.o"
 "template\udb.o"
 "template\bsp_delay.o"
+"template\imu_task.o"
+"template\ros2_comm.o"
+"template\mpu6050.o"
+"template\mahonyahrs.o"
+"template\madgwickahrs.o"
 --strict --scatter "Template\Template.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

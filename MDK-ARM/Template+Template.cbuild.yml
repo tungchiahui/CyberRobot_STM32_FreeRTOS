@@ -30,7 +30,7 @@ build:
     ASM:
       - -masm=auto
     C:
-      - -std=c11
+      - -std=c99
       - -fno-rtti
       - -funsigned-char
       - -fshort-enums
@@ -50,7 +50,7 @@ build:
       - -Wno-parentheses-equality
     CPP:
       - -xc++
-      - -std=c++17
+      - -std=c++11
       - -fno-rtti
       - -funsigned-char
       - -fshort-enums
@@ -160,6 +160,11 @@ build:
           misc:
             CPP:
               - -xc++
+        - file: ../Core/Src/i2c.c
+          category: sourceC
+          misc:
+            CPP:
+              - -xc++
         - file: ../Core/Src/tim.c
           category: sourceC
           misc:
@@ -217,6 +222,16 @@ build:
           category: sourceC
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
           category: sourceC
+        - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
+          category: sourceC
+          misc:
+            CPP:
+              - -xc++
+        - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
+          category: sourceC
+          misc:
+            CPP:
+              - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
           category: sourceC
           misc:
@@ -327,6 +342,16 @@ build:
     - group: bsp/boards
       files:
         - file: ../bsp/boards/Src/bsp_delay.cpp
+          category: sourceCpp
+        - file: ../bsp/boards/Src/imu_task.cpp
+          category: sourceCpp
+        - file: ../bsp/boards/Src/ros2_comm.cpp
+          category: sourceCpp
+        - file: ../bsp/boards/Src/mpu6050.cpp
+          category: sourceCpp
+        - file: ../bsp/boards/Src/MahonyAHRS.cpp
+          category: sourceCpp
+        - file: ../bsp/boards/Src/MadgwickAHRS.cpp
           category: sourceCpp
   constructed-files:
     - file: RTE/_Template/RTE_Components.h

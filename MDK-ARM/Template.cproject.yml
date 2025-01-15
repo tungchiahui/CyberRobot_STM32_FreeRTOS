@@ -25,7 +25,7 @@ project:
         - STM32F407xx
       misc:
         - C:
-            - -std=c11
+            - -std=c99
           C-CPP:
             - -fno-rtti
             - -funsigned-char
@@ -46,7 +46,7 @@ project:
             - -Wno-parentheses-equality
           CPP:
             - -xc++
-            - -std=c++17
+            - -std=c++11
           ASM:
             - -masm=auto
           Link:
@@ -77,6 +77,10 @@ project:
             - CPP:
                 - -xc++
         - file: ../Core/Src/freertos.c
+          misc:
+            - CPP:
+                - -xc++
+        - file: ../Core/Src/i2c.c
           misc:
             - CPP:
                 - -xc++
@@ -117,6 +121,14 @@ project:
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
+        - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
+          misc:
+            - CPP:
+                - -xc++
+        - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
+          misc:
+            - CPP:
+                - -xc++
         - file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
           misc:
             - CPP:
@@ -195,5 +207,10 @@ project:
     - group: bsp/boards
       files:
         - file: ../bsp/boards/Src/bsp_delay.cpp
+        - file: ../bsp/boards/Src/imu_task.cpp
+        - file: ../bsp/boards/Src/ros2_comm.cpp
+        - file: ../bsp/boards/Src/mpu6050.cpp
+        - file: ../bsp/boards/Src/MahonyAHRS.cpp
+        - file: ../bsp/boards/Src/MadgwickAHRS.cpp
   components:
     - component: ARM::CMSIS:CORE

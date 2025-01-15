@@ -3,19 +3,19 @@
 #include <string.h> // For memcpy
 
 //USART_Debuger
-uint8_t rx_buffer[1];
+uint8_t udb_rx_buffer[1];
 
 //应用数据
 UDB udb;
 
-extern "C"
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-	if(huart->Instance == USART2)
-	{
-		udb.rx.Data_Analysis(rx_buffer);
-	}
-}
+//extern "C"
+//void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+//{
+//	if(huart->Instance == USART2)
+//	{
+//		udb.rx.Data_Analysis(udb_rx_buffer);
+//	}
+//}
 
 
 uint8_t buffer[UDB_RX_TOTAL_SIZE + 3];

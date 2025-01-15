@@ -48,6 +48,8 @@
 
 /* USER CODE END Variables */
 osThreadId CHASSIS_TASKHandle;
+osThreadId IMU_TASKHandle;
+osThreadId ROS2_UART_TASKHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -55,6 +57,8 @@ osThreadId CHASSIS_TASKHandle;
 /* USER CODE END FunctionPrototypes */
 
 void chassis_task(void const * argument);
+void imu_task(void const * argument);
+void ros2_uart_task(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -105,6 +109,14 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(CHASSIS_TASK, chassis_task, osPriorityNormal, 0, 128);
   CHASSIS_TASKHandle = osThreadCreate(osThread(CHASSIS_TASK), NULL);
 
+  /* definition and creation of IMU_TASK */
+  osThreadDef(IMU_TASK, imu_task, osPriorityIdle, 0, 128);
+  IMU_TASKHandle = osThreadCreate(osThread(IMU_TASK), NULL);
+
+  /* definition and creation of ROS2_UART_TASK */
+  osThreadDef(ROS2_UART_TASK, ros2_uart_task, osPriorityIdle, 0, 128);
+  ROS2_UART_TASKHandle = osThreadCreate(osThread(ROS2_UART_TASK), NULL);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -127,6 +139,42 @@ __weak void chassis_task(void const * argument)
     osDelay(1);
   }
   /* USER CODE END chassis_task */
+}
+
+/* USER CODE BEGIN Header_imu_task */
+/**
+* @brief Function implementing the IMU_TASK thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_imu_task */
+__weak void imu_task(void const * argument)
+{
+  /* USER CODE BEGIN imu_task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END imu_task */
+}
+
+/* USER CODE BEGIN Header_ros2_uart_task */
+/**
+* @brief Function implementing the ROS2_UART_TASK thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_ros2_uart_task */
+__weak void ros2_uart_task(void const * argument)
+{
+  /* USER CODE BEGIN ros2_uart_task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END ros2_uart_task */
 }
 
 /* Private application code --------------------------------------------------*/
