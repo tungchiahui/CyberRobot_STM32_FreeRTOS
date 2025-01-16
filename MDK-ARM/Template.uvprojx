@@ -1814,6 +1814,11 @@
               <FileType>8</FileType>
               <FilePath>..\bsp\boards\Src\MadgwickAHRS.cpp</FilePath>
             </File>
+            <File>
+              <FileName>serial_pack.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\bsp\boards\Src\serial_pack.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -353,6 +353,8 @@ build:
           category: sourceCpp
         - file: ../bsp/boards/Src/MadgwickAHRS.cpp
           category: sourceCpp
+        - file: ../bsp/boards/Src/serial_pack.cpp
+          category: sourceCpp
   constructed-files:
     - file: RTE/_Template/RTE_Components.h
       category: header

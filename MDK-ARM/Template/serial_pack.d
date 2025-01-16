@@ -1,6 +1,7 @@
-template/ros2_comm.o: ..\bsp\boards\Src\ros2_comm.cpp \
-  ..\bsp\boards\Inc\ros2_comm.h ..\Core\Inc\startup_main.h \
-  ..\Core\Inc\main.h ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
+template/serial_pack.o: ..\bsp\boards\Src\serial_pack.cpp \
+  ..\bsp\boards\Inc\serial_pack.h ..\bsp\boards\Inc\struct_typedef.h \
+  ..\Core\Inc\usart.h ..\Core\Inc\main.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h \
@@ -26,7 +27,6 @@ template/ros2_comm.o: ..\bsp\boards\Src\ros2_comm.cpp \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\bsp\boards\Inc\struct_typedef.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   ..\Core\Inc\FreeRTOSConfig.h \
@@ -40,7 +40,4 @@ template/ros2_comm.o: ..\bsp\boards\Src\ros2_comm.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\applications\Inc\udb.h ..\bsp\boards\Inc\serial_pack.h \
-  ..\bsp\boards\Inc\mpu6050.h ..\applications\Inc\mg513_gmr500ppr.h \
-  ..\Core\Inc\tim.h
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h

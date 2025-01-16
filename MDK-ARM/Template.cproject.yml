@@ -212,5 +212,6 @@ project:
         - file: ../bsp/boards/Src/mpu6050.cpp
         - file: ../bsp/boards/Src/MahonyAHRS.cpp
         - file: ../bsp/boards/Src/MadgwickAHRS.cpp
+        - file: ../bsp/boards/Src/serial_pack.cpp
   components:
     - component: ARM::CMSIS:CORE
