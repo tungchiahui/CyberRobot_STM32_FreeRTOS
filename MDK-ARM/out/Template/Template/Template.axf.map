@@ -3912,7 +3912,7 @@ Image Symbol Table
     ../mathlib/fpclassifyf.c                 0x00000000   Number         0  fpclassifyf.o ABSOLUTE
     ../mathlib/funder.c                      0x00000000   Number         0  funder.o ABSOLUTE
     ../mathlib/sqrtf.c                       0x00000000   Number         0  sqrtf.o ABSOLUTE
-    /home/tungchiahui/UserFloder/mysource/CyberNaviRobot/MCU_MainController/MDK-ARM/startup_stm32f407xx.s 0x00000000   Number         0  startup_stm32f407xx.o ABSOLUTE
+    C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/MCU_MainController/MDK-ARM/startup_stm32f407xx.s 0x00000000   Number         0  startup_stm32f407xx.o ABSOLUTE
     MadgwickAHRS.cpp                         0x00000000   Number         0  MadgwickAHRS.o ABSOLUTE
     MahonyAHRS.cpp                           0x00000000   Number         0  MahonyAHRS.o ABSOLUTE
     Unwind-EHABI.cpp                         0x00000000   Number         0  Unwind-EHABI.cpp.o ABSOLUTE
@@ -5289,47 +5289,47 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      2120         16          0         12         40      19103   MahonyAHRS.o
-         4          0          0          0          0       6606   bsp_delay.o
-       406          8          0          0         73       4411   chassis_api.o
-       260          0          0          0          0       3101   chassis_task.o
-       152          0          0          0          0      22838   cmsis_os.o
-       246         84         37          0        608       4029   freertos.o
-       116          0          0          0          0       1802   gpio.o
-       630          0          0          0      15389       5555   heap_4.o
-       214          0          0          0         84       7616   i2c.o
-        10          0          0          0          0       2161   imu_task.o
-       150          0          0          0          0       2515   list.o
-       246          0          0          0          0       3756   main.o
-      1198         38          4          0        576      23487   mg513_gmr500ppr.o
-      1126         44          0          0         85      19434   mpu6050.o
-       378          4          0          0          0       5195   pid.o
-       290         16          0         60        795       6393   pid_user.o
-       896         16          0          4          5       4502   port.o
-       250          0          0          0          1       4902   ros2_comm.o
-       432          0          0          0        376      14658   serial_pack.o
-        98          0          0          0          0       2400   startup_main.o
-        64         26        392          0       1536       1040   startup_stm32f407xx.o
-        92          0          0          5          4       7677   stm32f4xx_hal.o
-       152          0          0          0          0      11018   stm32f4xx_hal_cortex.o
-       170          0          0          0          0      10118   stm32f4xx_hal_dma.o
-       404          0          0          0          0       5481   stm32f4xx_hal_gpio.o
-      7280         16          0          0          0      48506   stm32f4xx_hal_i2c.o
-        66          0          0          0          0       3825   stm32f4xx_hal_msp.o
-      1456          4          0          0          0       7928   stm32f4xx_hal_rcc.o
-      2638          4          0          0          0      58429   stm32f4xx_hal_tim.o
-       268          0          0          0          0      22694   stm32f4xx_hal_tim_ex.o
-       180          0          0          0         72       7681   stm32f4xx_hal_timebase_tim.o
-      1626          0          0          0          0      28071   stm32f4xx_hal_uart.o
-       180          0          0          0          0       8154   stm32f4xx_it.o
-        18          0         24          4          0       3002   system_stm32f4xx.o
-      2724          8          0          0        300      29090   tasks.o
-      2260          4          0          0        648      12771   tim.o
-       170          0          0          0         60       9502   udb.o
-       324          0          0          0        144       7868   usart.o
+      2120         16          0         12         40      18599   MahonyAHRS.o
+         4          0          0          0          0       6746   bsp_delay.o
+       406          8          0          0         73       4492   chassis_api.o
+       260          0          0          0          0       3273   chassis_task.o
+       152          0          0          0          0      22754   cmsis_os.o
+       246         84         37          0        608       4200   freertos.o
+       116          0          0          0          0       1842   gpio.o
+       630          0          0          0      15389       5571   heap_4.o
+       214          0          0          0         84       7694   i2c.o
+        10          0          0          0          0       2137   imu_task.o
+       150          0          0          0          0       2646   list.o
+       246          0          0          0          0       4088   main.o
+      1198         38          4          0        576      23085   mg513_gmr500ppr.o
+      1126         44          0          0         85      19056   mpu6050.o
+       378          4          0          0          0       5276   pid.o
+       290         16          0         60        795       6474   pid_user.o
+       896         16          0          4          5       4633   port.o
+       250          0          0          0          1       5093   ros2_comm.o
+       432          0          0          0        376      14657   serial_pack.o
+        98          0          0          0          0       2340   startup_main.o
+        64         26        392          0       1536       1072   startup_stm32f407xx.o
+        92          0          0          5          4       7818   stm32f4xx_hal.o
+       152          0          0          0          0      11240   stm32f4xx_hal_cortex.o
+       170          0          0          0          0      10168   stm32f4xx_hal_dma.o
+       404          0          0          0          0       5531   stm32f4xx_hal_gpio.o
+      7280         16          0          0          0      48520   stm32f4xx_hal_i2c.o
+        66          0          0          0          0       3956   stm32f4xx_hal_msp.o
+      1456          4          0          0          0       7906   stm32f4xx_hal_rcc.o
+      2638          4          0          0          0      58407   stm32f4xx_hal_tim.o
+       268          0          0          0          0      22672   stm32f4xx_hal_tim_ex.o
+       180          0          0          0         72       7704   stm32f4xx_hal_timebase_tim.o
+      1626          0          0          0          0      28085   stm32f4xx_hal_uart.o
+       180          0          0          0          0       8141   stm32f4xx_it.o
+        18          0         24          4          0       3133   system_stm32f4xx.o
+      2724          8          0          0        300      28953   tasks.o
+      2260          4          0          0        648      12758   tim.o
+       170          0          0          0         60       9519   udb.o
+       324          0          0          0        144       7946   usart.o
 
     ----------------------------------------------------------------------
-     29492        300        492         88      20816     447319   Object Totals
+     29492        300        492         88      20816     448185   Object Totals
          0          0         32          0          0          0   (incl. Generated)
        198         12          3          3         20          0   (incl. Padding)
 
@@ -5399,8 +5399,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     32832        632        492         88      20912     448175   Grand Totals
-     32832        632        492         88      20912     448175   ELF Image Totals
+     32832        632        492         88      20912     449041   Grand Totals
+     32832        632        492         88      20912     449041   ELF Image Totals
      32832        632        492         88          0          0   ROM Totals
 
 ==============================================================================

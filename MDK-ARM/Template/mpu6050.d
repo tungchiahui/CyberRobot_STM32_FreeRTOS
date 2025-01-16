@@ -41,4 +41,5 @@ template/mpu6050.o: ..\bsp\boards\Src\mpu6050.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\bsp\boards\Inc\MahonyAHRS.h ..\Core\Inc\i2c.h
+  ..\bsp\boards\Inc\MahonyAHRS.h ..\bsp\boards\Inc\MadgwickAHRS.h \
+  ..\Core\Inc\i2c.h

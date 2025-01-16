@@ -21,8 +21,6 @@ void startup_main(void)
 	//MPU6050接收定时器中断
 	HAL_TIM_Base_Start_IT(&htim6);
 	
-	
-	
 	//开启蓝牙串口接收中断
 	HAL_UART_Receive_IT(&huart2,udb_rx_buffer,1);
 	//开启ROS2串口接收中断

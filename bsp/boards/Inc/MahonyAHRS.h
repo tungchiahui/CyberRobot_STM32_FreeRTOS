@@ -10,7 +10,9 @@
 // 02/10/2011	SOH Madgwick	Optimised for reduced CPU load
 //
 //=====================================================================================================
-#if 1
+#define MAHONY_ENABLE 0
+
+#if MAHONY_ENABLE
 
 #ifndef MahonyAHRS_h
 #define MahonyAHRS_h

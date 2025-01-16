@@ -3,11 +3,11 @@
 <title>Static Call Graph - [Template\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Template\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Thu Jan 16 11:13:27 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Thu Jan 16 13:02:15 2025
 <BR><P>
-<H3>Maximum Stack Usage =        248 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        256 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; MX_FREERTOS_Init &rArr; osThreadCreate &rArr; xTaskCreate &rArr; vPortFree &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
+TIM2_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 <P>
 <H3>
 Functions with no stack information
@@ -986,7 +986,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ab]"></a>HAL_TIM_IRQHandler</STRONG> (Thumb, 334 bytes, Stack size 16 bytes, stm32f4xx_hal_tim.o(.text.HAL_TIM_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_CommutCallback
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_TriggerCallback
@@ -1053,7 +1053,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[af]"></a>HAL_TIM_PeriodElapsedCallback</STRONG> (Thumb, 468 bytes, Stack size 24 bytes, mg513_gmr500ppr.o(.text.HAL_TIM_PeriodElapsedCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IncTick
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MG513_GMR500PPR::Encoder::motor_message_filtering(Encoder_TypeDef*, Motor_TypeDef*, float, unsigned char)
@@ -1300,16 +1300,18 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[de]"></a>MahonyAHRSupdate</STRONG> (Thumb, 1132 bytes, Stack size 64 bytes, mahonyahrs.o(.text.MahonyAHRSupdate))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = MahonyAHRSupdate
+<P><STRONG><a name="[de]"></a>MadgwickAHRSupdate</STRONG> (Thumb, 1804 bytes, Stack size 80 bytes, madgwickahrs.o(.text.MadgwickAHRSupdate))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
-<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MahonyAHRSupdateIMU
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MadgwickAHRSupdateIMU
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050::GET::Euler()
 </UL>
 
-<P><STRONG><a name="[df]"></a>MahonyAHRSupdateIMU</STRONG> (Thumb, 744 bytes, Stack size 0 bytes, mahonyahrs.o(.text.MahonyAHRSupdateIMU))
-<BR><BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MahonyAHRSupdate
+<P><STRONG><a name="[df]"></a>MadgwickAHRSupdateIMU</STRONG> (Thumb, 980 bytes, Stack size 64 bytes, madgwickahrs.o(.text.MadgwickAHRSupdateIMU))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = MadgwickAHRSupdateIMU
+</UL>
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MadgwickAHRSupdate
 </UL>
 
 <P><STRONG><a name="[3]"></a>MemManage_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text.MemManage_Handler))
@@ -1356,42 +1358,42 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(.text)
 </UL>
 <P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text.TIM2_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = TIM2_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = TIM2_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[27]"></a>TIM3_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text.TIM3_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = TIM3_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = TIM3_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[28]"></a>TIM4_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text.TIM4_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = TIM4_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = TIM4_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[3c]"></a>TIM5_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text.TIM5_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = TIM5_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = TIM5_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[40]"></a>TIM6_DAC_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text.TIM6_DAC_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = TIM6_DAC_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = TIM6_DAC_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[41]"></a>TIM7_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text.TIM7_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = TIM7_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = TIM7_IRQHandler &rArr; HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
@@ -1540,7 +1542,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b7]"></a>MPU6050::GET::All()</STRONG> (Thumb, 300 bytes, Stack size 48 bytes, mpu6050.o(.text._ZN7MPU60503GET3AllEv))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = MPU6050::GET::All() &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = MPU6050::GET::All() &rArr; MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050::GET::Euler()
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
@@ -1549,9 +1551,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[f7]"></a>MPU6050::GET::Euler()</STRONG> (Thumb, 336 bytes, Stack size 24 bytes, mpu6050.o(.text._ZN7MPU60503GET5EulerEv))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = MPU6050::GET::Euler() &rArr; MahonyAHRSupdate
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = MPU6050::GET::Euler() &rArr; MadgwickAHRSupdate &rArr; MadgwickAHRSupdateIMU
 </UL>
-<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MahonyAHRSupdate
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MadgwickAHRSupdate
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asinf
 </UL>

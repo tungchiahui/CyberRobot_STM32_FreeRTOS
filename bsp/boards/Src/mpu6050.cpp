@@ -1,6 +1,7 @@
 #include "mpu6050.h"
 #include <math.h>
 #include "MahonyAHRS.h"
+#include "MadgwickAHRS.h"
 #include "i2c.h"
 
 uint8_t I2C_Device_Addr;   //查找到后，写到MPU6050_ADDR宏里
@@ -187,13 +188,17 @@ void MPU6050::Convert_Dimensions(fp32 *q)
 	mpu6050.data.Gyro.Y = mpu6050.data.Gyro.Y * (3.14159265358979f / 180.0f);
 	mpu6050.data.Gyro.Z = mpu6050.data.Gyro.Z * (3.14159265358979f / 180.0f);
 	
-//	MadgwickAHRSupdate(mpu6050.data.Gyro.X,mpu6050.data.Gyro.Y,mpu6050.data.Gyro.Z,
-//										 mpu6050.data.Accel.X,mpu6050.data.Accel.Y,mpu6050.data.Accel.Z,
-//										 0,0,0);
+#if MADGWICK_ENABLE
+	MadgwickAHRSupdate(mpu6050.data.Gyro.X,mpu6050.data.Gyro.Y,mpu6050.data.Gyro.Z,
+										 mpu6050.data.Accel.X,mpu6050.data.Accel.Y,mpu6050.data.Accel.Z,
+										 0,0,0);
+#endif
 	
+#if MAHONY_ENABLE
 	MahonyAHRSupdate(mpu6050.data.Gyro.X,mpu6050.data.Gyro.Y,mpu6050.data.Gyro.Z,
 										 mpu6050.data.Accel.X,mpu6050.data.Accel.Y,mpu6050.data.Accel.Z,
 										 0,0,0);
+#endif
 	
 		for(int16_t i = 0;i < 4;i++)
 		{

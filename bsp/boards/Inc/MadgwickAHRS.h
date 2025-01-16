@@ -10,7 +10,9 @@
 // 02/10/2011	SOH Madgwick	Optimised for reduced CPU load
 //
 //=====================================================================================================
-#if 0
+#define MADGWICK_ENABLE 1
+
+#if MADGWICK_ENABLE
 
 #ifndef MadgwickAHRS_h
 #define MadgwickAHRS_h
