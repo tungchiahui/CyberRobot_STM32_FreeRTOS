@@ -17,7 +17,7 @@ void ros2_uart_task(void const * argument)
     // int32_t int32_buffer[] = {305419896};
     fp32 fp32_buffer[] = {mpu6050.data.Accel.X,mpu6050.data.Accel.Y,mpu6050.data.Accel.Z,
 						  mpu6050.data.Gyro.X,mpu6050.data.Gyro.Y,mpu6050.data.Gyro.Z,
-						  mpu6050.data.Euler.yaw,mpu6050.data.Euler.pitch,mpu6050.data.Euler.roll,
+						  mpu6050.data.Euler.roll,mpu6050.data.Euler.pitch,mpu6050.data.Euler.yaw,
 						  mpu6050.data.Quat.q[0],mpu6050.data.Quat.q[1],mpu6050.data.Quat.q[2],mpu6050.data.Quat.q[3],
 						 mpu6050.data.Temp,
 						 mg513_gmr500ppr_motor[0].encoder.motor_data.motor_speed,mg513_gmr500ppr_motor[1].encoder.motor_data.motor_speed,

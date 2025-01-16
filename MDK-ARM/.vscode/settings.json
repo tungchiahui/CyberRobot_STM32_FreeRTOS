@@ -1,6 +1,6 @@
 {
     "clangd.arguments": [
-        "--compile-commands-dir=c:\\Users\\tung\\UserFolder\\XiaomiCloud\\Work\\Source\\CyberNaviRobot\\MCU_MainController\\MDK-ARM\\out\\Template\\Template"
+        "--compile-commands-dir=/home/tungchiahui/UserFloder/mysource/CyberNaviRobot/MCU_MainController/MDK-ARM/out/Template/Template"
     ],
     "cmsis-csolution.actions": [
         {
@@ -11,5 +11,8 @@
                 "debug": "Arm Debugger"
             }
         }
+    ],
+    "python.analysis.extraPaths": [
+        "/home/tungchiahui/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.3.0/sw/osgi/plugins/com.arm.debug.interpreter.jython.api_0.0.0.202410301516"
     ]
 }
