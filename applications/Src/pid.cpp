@@ -57,6 +57,11 @@ fp32 PID_Controller::CORE::PID_Calc(pid_type_def *pid, fp32 ref, fp32 set)
         LimitMax(pid->Iout, pid->max_iout);
         pid->out = pid->Pout + pid->Iout + pid->Dout;
         LimitMax(pid->out, pid->max_out);
+				//清零积分项
+				if(pid->set == 0)
+				{
+					pid->Iout = 0;
+				}
     }
     else if (pid->mode == PID_DELTA)
     {

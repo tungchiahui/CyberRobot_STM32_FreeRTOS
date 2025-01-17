@@ -8,6 +8,11 @@
 
 #include "mpu6050.h"
 
+
+//0号：左后
+//1号：左前
+//2号：右前
+//3号：右后
 MG513_GMR500PPR mg513_gmr500ppr_motor[4];
 
 
@@ -68,6 +73,9 @@ MG513_GMR500PPR mg513_gmr500ppr_motor[4];
 //}
 
 
+extern osSemaphoreId IMU_ROS2_SemapHandle;
+extern osSemaphoreId MOTOR_ROS2_SemapHandle;
+
 
 extern "C"
 /**
@@ -78,18 +86,21 @@ extern "C"
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	
+		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	
     /* FreeRTOS的时基，需要注释掉main.c中的HAL_TIM_PeriodElapsedCallback函数 */
     if (htim->Instance == TIM7) 
     {
     HAL_IncTick();
     }
 		
-		//陀螺仪
-		if (htim->Instance == TIM6) 
+		if(htim->Instance == TIM13)
 		{
+			//MPU6050读取
 			mpu6050.Get.All();
+			xSemaphoreGiveFromISR(IMU_ROS2_SemapHandle,&xHigherPriorityTaskWoken);
 		}
-		
 
     /* 电机编码器 */
 		//电机0
@@ -146,10 +157,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     /* 电机编码器运行中断 */
 	if(htim->Instance == TIM6)
 	{
-	    mg513_gmr500ppr_motor[0].encoder.get_finall_encoder_value(&motor0_encoder_htim);
-	    mg513_gmr500ppr_motor[1].encoder.get_finall_encoder_value(&motor1_encoder_htim);
-	    mg513_gmr500ppr_motor[2].encoder.get_finall_encoder_value(&motor2_encoder_htim);
-	    mg513_gmr500ppr_motor[3].encoder.get_finall_encoder_value(&motor3_encoder_htim);
+	   mg513_gmr500ppr_motor[0].encoder.get_finall_encoder_value(&motor0_encoder_htim);
+	   mg513_gmr500ppr_motor[1].encoder.get_finall_encoder_value(&motor1_encoder_htim);
+	   mg513_gmr500ppr_motor[2].encoder.get_finall_encoder_value(&motor2_encoder_htim);
+	   mg513_gmr500ppr_motor[3].encoder.get_finall_encoder_value(&motor3_encoder_htim);
+		xSemaphoreGiveFromISR(MOTOR_ROS2_SemapHandle,&xHigherPriorityTaskWoken);
 	}
 }
 

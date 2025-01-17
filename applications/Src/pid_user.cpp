@@ -16,7 +16,7 @@ pid_type_def pid_pos_x;
 pid_type_def pid_pos_y;
 
 //电机PID三参
-fp32 mg513_speed_pid[3] = {50,0.6,0.3};
+fp32 mg513_speed_pid[3] = {310,1,0.1};
 fp32 m513_position_pid[3] = {0.5,0,0.01};
 
 
@@ -37,7 +37,7 @@ void PID_Controller::All_Device_Init(void)
 	//底盘PID
 	for(int i=0;i<4;i++)
 	{
-    this->core.PID_Init(&pid_v_1[i], PID_POSITION, mg513_speed_pid, 16799, 5000);
+    this->core.PID_Init(&pid_v_1[i], PID_POSITION, mg513_speed_pid, 16799, 13000);
 		this->core.PID_Init(&pid_pos_1[i], PID_POSITION, m513_position_pid, 16799, 5000);
 	}
 	//其他部位电机PID

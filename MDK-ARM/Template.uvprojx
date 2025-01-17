@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>3</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -395,14 +395,14 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
-              <FileName>startup_main.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\startup_main.cpp</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/main.c</FilePath>
+            </File>
+            <File>
+              <FileName>startup_main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\startup_main.cpp</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>

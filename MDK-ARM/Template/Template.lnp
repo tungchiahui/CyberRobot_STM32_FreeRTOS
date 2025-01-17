@@ -1,7 +1,7 @@
 --cpu=Cortex-M4.fp.sp
 "template\startup_stm32f407xx.o"
-"template\startup_main.o"
 "template\main.o"
+"template\startup_main.o"
 "template\gpio.o"
 "template\freertos.o"
 "template\i2c.o"

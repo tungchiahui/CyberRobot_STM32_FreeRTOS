@@ -14,6 +14,7 @@ typedef enum
 {
     CHASSIS_NORMAL   = 0,      //底盘遥控行走
     CHASSIS_GYROSCOPE = 1,	   //小陀螺模式
+		CHASSIS_ROS2_CMD = 2,			 //ROS2接管模式
 }eChassisAction;
 
 

@@ -4,7 +4,7 @@
 #include "MadgwickAHRS.h"
 #include "i2c.h"
 
-uint8_t I2C_Device_Addr;   //查找到后，写到MPU6050_ADDR宏里
+uint8_t I2C_Device_Addr = 0;   //查找到后，写到MPU6050_ADDR宏里
 
 //IMU_Kalman_t imu_kalman_data;  //卡尔曼滤波待写
 
@@ -34,7 +34,7 @@ void MPU6050::Delay(uint32_t ms)
   for(I2C_Device_Addr = 0;I2C_Device_Addr < 255;I2C_Device_Addr++)
   {
 		//寻找设备地址，并打印地址，然后检查设备是否就绪
-	  if(HAL_I2C_IsDeviceReady (&hi2c2 ,I2C_Device_Addr ,1 ,1000) == HAL_OK )
+	  if(HAL_I2C_IsDeviceReady (&hi2c2 ,I2C_Device_Addr ,1 ,HAL_MAX_DELAY) == HAL_OK )
 	  {
 //			printf("HAL_OK\r\n");
 //		  printf("%d\r\n",Addr_Inspect);

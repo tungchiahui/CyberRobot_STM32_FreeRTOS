@@ -10,16 +10,19 @@ extern uint8_t ros2_rx_buffer[1];
 void startup_main(void)
 {
 	//初始化MPU6050
-	mpu6050.I2C_Search_Addr();
-  mpu6050.Init();
+//	mpu6050.I2C_Search_Addr();
+//  mpu6050.Init();
 	//等待设备初始化成功
-	HAL_Delay(1000);
+//	HAL_Delay(1000);
 	
 	//矫正零飘
-	mpu6050.cail.CalibrateGyro();
+//	mpu6050.cail.CalibrateGyro();
 	
 	//MPU6050接收定时器中断
-	HAL_TIM_Base_Start_IT(&htim6);
+//	HAL_TIM_Base_Start_IT(&htim13);
+	
+	//编码器定时器中断
+  HAL_TIM_Base_Start_IT(&htim6);
 	
 	//开启蓝牙串口接收中断
 	HAL_UART_Receive_IT(&huart2,udb_rx_buffer,1);

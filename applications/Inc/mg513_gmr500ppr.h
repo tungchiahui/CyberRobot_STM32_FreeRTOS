@@ -18,7 +18,7 @@ extern "C"
 #define GAP_TIME_MS           1       //采集间隔时长
 #define LPF_Q                 0.9f    //低通滤波Q系数
 
-//速度范围:0-900rpm
+//速度范围:0-293rpm(实测322)
 //单圈角度范围:0-2000
 	
 	
