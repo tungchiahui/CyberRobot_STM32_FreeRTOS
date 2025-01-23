@@ -23,7 +23,7 @@ void CHASSIS::Remote_Control_Chassis_Set_Mode(void)
    {
        actChassis = CHASSIS_GYROSCOPE;
    }
-		else if(udb.rx.apply.rc.s[0] == false && udb.rx.apply.rc.s[1] == false) //ROS2接管模式
+		else if(udb.rx.apply.rc.s[0] == true && udb.rx.apply.rc.s[1] == true) //ROS2接管模式
    {
        actChassis = CHASSIS_ROS2_CMD;
    }
@@ -70,13 +70,10 @@ void CHASSIS::Remote_Control_Chassis_Mode(void)
         this->oriChassis.Speed.vw *= 0;
         break;
 		case CHASSIS_ROS2_CMD: //ROS2接管模式
-        this->oriChassis.Speed.vx =   cmd_vel_.Linear.X;
-        this->oriChassis.Speed.vy =   cmd_vel_.Linear.Y;
-        this->oriChassis.Speed.vw =   cmd_vel_.Angular.Z;
-
-//        this->oriChassis.Speed.vx *= (1.26f / 660.0f);
-//        this->oriChassis.Speed.vy *= (1.26f / 660.0f);
-//        this->oriChassis.Speed.vw *=-(7.01f / 660.0f);
+				//单位就是m/s和rad/s
+        this->oriChassis.Speed.vx =   cmd_vel_.Linear.Y;
+        this->oriChassis.Speed.vy =   cmd_vel_.Linear.X;
+        this->oriChassis.Speed.vw = - cmd_vel_.Angular.Z;
         break;
     default:
         break;

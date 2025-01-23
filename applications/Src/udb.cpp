@@ -41,6 +41,8 @@ bool UDB::RX::Data_Apply(void)
 	{
 		buffer[i] = this->data.buffer[i];
 	}
+	this->apply.rc.s[0] = (this->data.buffer[1] & 0x01) != 0;
+	this->apply.rc.s[1] = (this->data.buffer[1] & 0x02) != 0;
 	
 	this->apply.rc.ch[0] = udb.convert.Bytes2Short(this->data.buffer[3],this->data.buffer[2]);
 	this->apply.rc.ch[1] = udb.convert.Bytes2Short(this->data.buffer[5],this->data.buffer[4]);
