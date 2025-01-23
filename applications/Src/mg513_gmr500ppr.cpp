@@ -74,7 +74,7 @@ MG513_GMR500PPR mg513_gmr500ppr_motor[4];
 
 
 //extern osSemaphoreId IMU_ROS2_SemapHandle;
-extern osSemaphoreId MOTOR_ROS2_SemapHandle;
+extern osSemaphoreId_t MOTOR_ROS2_SemapHandle;
 
 
 extern "C"
@@ -162,13 +162,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	   mg513_gmr500ppr_motor[2].encoder.get_finall_encoder_value(&motor2_encoder_htim);
 	   mg513_gmr500ppr_motor[3].encoder.get_finall_encoder_value(&motor3_encoder_htim);
 		
-		 // 释放信号量
-     if (xSemaphoreGiveFromISR(MOTOR_ROS2_SemapHandle, &xHigherPriorityTaskWoken) == pdTRUE) 
-		 {
-            // 成功释放信号量
-     }
-		// 触发任务切换（若需要）
-		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+		osSemaphoreRelease(MOTOR_ROS2_SemapHandle);
+		
+//		 // 释放信号量
+//     if (xSemaphoreGiveFromISR(MOTOR_ROS2_SemapHandle, &xHigherPriorityTaskWoken) == pdTRUE) 
+//		 {
+//            // 成功释放信号量
+//     }
+//		// 触发任务切换（若需要）
+//		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
 }
 

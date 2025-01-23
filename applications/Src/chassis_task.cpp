@@ -29,7 +29,7 @@ void chassis_task(void const * argument)
     pid_controller.All_Device_Init();
 
     //绝对延时
-    uint32_t PreviousWakeTime = osKernelSysTick();
+    uint32_t PreviousWakeTime = osKernelGetTickCount();
 
     for(;;)
     {
@@ -52,7 +52,8 @@ void chassis_task(void const * argument)
 
         //chassis task control time
 		//底盘任务控制间隔
-		osDelayUntil(&PreviousWakeTime,CHASSIS_CONTROL_TIME_MS);
+			PreviousWakeTime += CHASSIS_CONTROL_TIME_MS;
+			osDelayUntil(PreviousWakeTime);
     }
 }
 

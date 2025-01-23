@@ -1,7 +1,7 @@
 --cpu=Cortex-M4.fp.sp
 "template\startup_stm32f407xx.o"
-"template\main.o"
 "template\startup_main.o"
+"template\main.o"
 "template\gpio.o"
 "template\freertos.o"
 "template\i2c.o"
@@ -36,7 +36,7 @@
 "template\stream_buffer.o"
 "template\tasks.o"
 "template\timers.o"
-"template\cmsis_os.o"
+"template\cmsis_os2.o"
 "template\heap_4.o"
 "template\port.o"
 "template\mg513_gmr500ppr.o"

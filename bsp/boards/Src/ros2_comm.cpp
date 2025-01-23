@@ -11,19 +11,19 @@ uint8_t ros2_rx_buffer[1];
 extern uint8_t udb_rx_buffer[1];
 
 //extern osSemaphoreId IMU_ROS2_SemapHandle;
-extern osSemaphoreId MOTOR_ROS2_SemapHandle;
+extern osSemaphoreId_t MOTOR_ROS2_SemapHandle;
 
 extern "C"
 void ros2_uart_task(void const * argument)
 {
-	uint32_t PreviousWakeTime = osKernelSysTick();
+	uint32_t PreviousWakeTime = osKernelGetTickCount();
 	for(;;)
 	{
 		
 //		xSemaphoreTake(IMU_ROS2_SemapHandle,portMAX_DELAY);
 		
 //		xSemaphoreTake(MOTOR_ROS2_SemapHandle,portMAX_DELAY);
-			osSemaphoreWait(MOTOR_ROS2_SemapHandle, osWaitForever);
+			osSemaphoreAcquire(MOTOR_ROS2_SemapHandle, osWaitForever);
 		
 		// bool bool_buffer[] = {1, 0, 1, 0};
 		// int8_t int8_buffer[] = {0x11,0x22};
@@ -48,7 +48,8 @@ void ros2_uart_task(void const * argument)
                                  nullptr, 0,
                                  nullptr, 0,
                                  fp32_buffer, sizeof(fp32_buffer) / sizeof(fp32));  
-		osDelayUntil(&PreviousWakeTime,1);
+		PreviousWakeTime += 1;
+		osDelayUntil(PreviousWakeTime);
 	}
 }
 

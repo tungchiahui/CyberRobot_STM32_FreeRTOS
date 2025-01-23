@@ -15,10 +15,10 @@ project:
         - ../Drivers/CMSIS/Device/ST/STM32F4xx/Include
         - ../Drivers/CMSIS/Include
         - ../Middlewares/Third_Party/FreeRTOS/Source/include
-        - ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
         - ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F
         - ../applications/Inc
         - ../bsp/boards/Inc
+        - ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
       debug: "on"
       define:
         - USE_HAL_DRIVER
@@ -184,7 +184,7 @@ project:
           misc:
             - CPP:
                 - -xc++
-        - file: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c
           misc:
             - CPP:
                 - -xc++

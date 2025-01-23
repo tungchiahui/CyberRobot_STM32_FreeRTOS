@@ -47,37 +47,43 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-osThreadId CHASSIS_TASKHandle;
-osThreadId IMU_TASKHandle;
-osThreadId ROS2_UART_TASKHandle;
-osSemaphoreId MOTOR_ROS2_SemapHandle;
+/* Definitions for CHASSIS_TASK */
+osThreadId_t CHASSIS_TASKHandle;
+const osThreadAttr_t CHASSIS_TASK_attributes = {
+  .name = "CHASSIS_TASK",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for IMU_TASK */
+osThreadId_t IMU_TASKHandle;
+const osThreadAttr_t IMU_TASK_attributes = {
+  .name = "IMU_TASK",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for ROS2_UART_TASK */
+osThreadId_t ROS2_UART_TASKHandle;
+const osThreadAttr_t ROS2_UART_TASK_attributes = {
+  .name = "ROS2_UART_TASK",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for MOTOR_ROS2_Semap */
+osSemaphoreId_t MOTOR_ROS2_SemapHandle;
+const osSemaphoreAttr_t MOTOR_ROS2_Semap_attributes = {
+  .name = "MOTOR_ROS2_Semap"
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* USER CODE END FunctionPrototypes */
 
-void chassis_task(void const * argument);
-void imu_task(void const * argument);
-void ros2_uart_task(void const * argument);
+void chassis_task(void *argument);
+void imu_task(void *argument);
+void ros2_uart_task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
-
-/* GetIdleTaskMemory prototype (linked to static allocation support) */
-void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize );
-
-/* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
-static StaticTask_t xIdleTaskTCBBuffer;
-static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
-
-void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize )
-{
-  *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
-  *ppxIdleTaskStackBuffer = &xIdleStack[0];
-  *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
-  /* place for user code */
-}
-/* USER CODE END GET_IDLE_TASK_MEMORY */
 
 /**
   * @brief  FreeRTOS initialization
@@ -94,9 +100,8 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_MUTEX */
 
   /* Create the semaphores(s) */
-  /* definition and creation of MOTOR_ROS2_Semap */
-  osSemaphoreDef(MOTOR_ROS2_Semap);
-  MOTOR_ROS2_SemapHandle = osSemaphoreCreate(osSemaphore(MOTOR_ROS2_Semap), 1);
+  /* creation of MOTOR_ROS2_Semap */
+  MOTOR_ROS2_SemapHandle = osSemaphoreNew(1, 0, &MOTOR_ROS2_Semap_attributes);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
@@ -111,21 +116,22 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* definition and creation of CHASSIS_TASK */
-  osThreadDef(CHASSIS_TASK, chassis_task, osPriorityNormal, 0, 128);
-  CHASSIS_TASKHandle = osThreadCreate(osThread(CHASSIS_TASK), NULL);
+  /* creation of CHASSIS_TASK */
+  CHASSIS_TASKHandle = osThreadNew(chassis_task, NULL, &CHASSIS_TASK_attributes);
 
-  /* definition and creation of IMU_TASK */
-  osThreadDef(IMU_TASK, imu_task, osPriorityIdle, 0, 128);
-  IMU_TASKHandle = osThreadCreate(osThread(IMU_TASK), NULL);
+  /* creation of IMU_TASK */
+  IMU_TASKHandle = osThreadNew(imu_task, NULL, &IMU_TASK_attributes);
 
-  /* definition and creation of ROS2_UART_TASK */
-  osThreadDef(ROS2_UART_TASK, ros2_uart_task, osPriorityIdle, 0, 128);
-  ROS2_UART_TASKHandle = osThreadCreate(osThread(ROS2_UART_TASK), NULL);
+  /* creation of ROS2_UART_TASK */
+  ROS2_UART_TASKHandle = osThreadNew(ros2_uart_task, NULL, &ROS2_UART_TASK_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  /* USER CODE END RTOS_EVENTS */
 
 }
 
@@ -136,7 +142,7 @@ void MX_FREERTOS_Init(void) {
   * @retval None
   */
 /* USER CODE END Header_chassis_task */
-__weak void chassis_task(void const * argument)
+__weak void chassis_task(void *argument)
 {
   /* USER CODE BEGIN chassis_task */
   /* Infinite loop */
@@ -154,7 +160,7 @@ __weak void chassis_task(void const * argument)
 * @retval None
 */
 /* USER CODE END Header_imu_task */
-__weak void imu_task(void const * argument)
+__weak void imu_task(void *argument)
 {
   /* USER CODE BEGIN imu_task */
   /* Infinite loop */
@@ -172,7 +178,7 @@ __weak void imu_task(void const * argument)
 * @retval None
 */
 /* USER CODE END Header_ros2_uart_task */
-__weak void ros2_uart_task(void const * argument)
+__weak void ros2_uart_task(void *argument)
 {
   /* USER CODE BEGIN ros2_uart_task */
   /* Infinite loop */
@@ -187,3 +193,4 @@ __weak void ros2_uart_task(void const * argument)
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
+
