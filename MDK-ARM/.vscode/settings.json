@@ -1,6 +1,6 @@
 {
     "clangd.arguments": [
-        "--compile-commands-dir=c:\\Users\\tung\\UserFolder\\XiaomiCloud\\Work\\Source\\CyberNaviRobot\\MCU_MainController\\MDK-ARM\\out\\Template\\Template"
+        "--compile-commands-dir=c:\\Users\\tung\\UserFolder\\XiaomiCloud\\Work\\Source\\CyberNaviRobot\\STM32_FreeRTOS_MainController\\MDK-ARM\\out\\Template\\Template"
     ],
     "cmsis-csolution.actions": [
         {

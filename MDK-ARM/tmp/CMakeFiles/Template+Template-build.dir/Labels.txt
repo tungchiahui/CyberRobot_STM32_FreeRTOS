@@ -1,0 +1,11 @@
+# Target labels
+ Template+Template
+# Source files and their labels
+C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/CMakeFiles/Template+Template-build
+C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/CMakeFiles/Template+Template-build.rule
+C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-build.rule
+C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure.rule
+C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch.rule
+C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update.rule
+C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download.rule
+C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir.rule
