@@ -73,7 +73,7 @@ MG513_GMR500PPR mg513_gmr500ppr_motor[4];
 //}
 
 
-extern osSemaphoreId IMU_ROS2_SemapHandle;
+//extern osSemaphoreId IMU_ROS2_SemapHandle;
 extern osSemaphoreId MOTOR_ROS2_SemapHandle;
 
 
@@ -95,12 +95,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
     }
 		
-		if(htim->Instance == TIM13)
-		{
-			//MPU6050读取
-			mpu6050.Get.All();
-			xSemaphoreGiveFromISR(IMU_ROS2_SemapHandle,&xHigherPriorityTaskWoken);
-		}
+//		if(htim->Instance == TIM13)
+//		{
+//			//MPU6050读取
+//			mpu6050.Get.All();
+//			xSemaphoreGiveFromISR(IMU_ROS2_SemapHandle,&xHigherPriorityTaskWoken);
+//		}
 
     /* 电机编码器 */
 		//电机0
@@ -161,7 +161,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	   mg513_gmr500ppr_motor[1].encoder.get_finall_encoder_value(&motor1_encoder_htim);
 	   mg513_gmr500ppr_motor[2].encoder.get_finall_encoder_value(&motor2_encoder_htim);
 	   mg513_gmr500ppr_motor[3].encoder.get_finall_encoder_value(&motor3_encoder_htim);
-		xSemaphoreGiveFromISR(MOTOR_ROS2_SemapHandle,&xHigherPriorityTaskWoken);
+		
+		 // 释放信号量
+     if (xSemaphoreGiveFromISR(MOTOR_ROS2_SemapHandle, &xHigherPriorityTaskWoken) == pdTRUE) 
+		 {
+            // 成功释放信号量
+     }
+		// 触发任务切换（若需要）
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
 }
 

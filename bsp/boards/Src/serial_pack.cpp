@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string.h> // For memcpy
 #include "cmsis_os.h"
-
+#include "ros2_comm.h"
 
 //包类对象
 SERIAL serial_pack_;
@@ -48,6 +48,7 @@ SERIAL serial_pack_;
 //	}
 //}
 
+
 bool SERIAL::RX::Data_Apply(void)
 {
 /*  可使用的数据
@@ -56,9 +57,15 @@ bool SERIAL::RX::Data_Apply(void)
 	this->data.int8_buffer[i];
 	this->data.int16_buffer[i];
 	this->data.int32_buffer[i];
-	this->data.fp32_buffer[i];
+	this->data.fp32_buffer[0][i];
 */
+	cmd_vel_.Linear.X = this->data.fp32_buffer[0];
+	cmd_vel_.Linear.Y = this->data.fp32_buffer[1];
+	cmd_vel_.Linear.Z = this->data.fp32_buffer[2];
 	
+	cmd_vel_.Angular.X = this->data.fp32_buffer[3];
+	cmd_vel_.Angular.Y = this->data.fp32_buffer[4];
+	cmd_vel_.Angular.Z = this->data.fp32_buffer[5];
 	return true;
 }
 

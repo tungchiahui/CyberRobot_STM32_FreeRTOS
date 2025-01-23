@@ -41,4 +41,4 @@ template/startup_main.o: ..\Core\Src\startup_main.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\Core\Inc\usart.h ..\bsp\boards\Inc\mpu6050.h ..\Core\Inc\tim.h
+  ..\Core\Inc\usart.h ..\Core\Inc\tim.h

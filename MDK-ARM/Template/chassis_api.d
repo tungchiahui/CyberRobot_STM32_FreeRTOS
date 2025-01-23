@@ -44,4 +44,4 @@ template/chassis_api.o: ..\applications\Src\chassis_api.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
   ..\applications\Inc\mg513_gmr500ppr.h ..\Core\Inc\tim.h \
   ..\applications\Inc\pid_user.h ..\applications\Inc\pid.h \
-  ..\applications\Inc\udb.h
+  ..\applications\Inc\udb.h ..\bsp\boards\Inc\ros2_comm.h

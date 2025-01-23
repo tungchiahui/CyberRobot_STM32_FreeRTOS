@@ -40,4 +40,5 @@ template/serial_pack.o: ..\bsp\boards\Src\serial_pack.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
+  ..\bsp\boards\Inc\ros2_comm.h ..\Core\Inc\startup_main.h

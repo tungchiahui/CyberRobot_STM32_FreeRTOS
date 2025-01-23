@@ -3,7 +3,7 @@
 #include "pid_user.h"
 #include <cstdint>
 #include "udb.h"
-
+#include "ros2_comm.h"
 
 CHASSIS chassis;
 
@@ -64,15 +64,19 @@ void CHASSIS::Remote_Control_Chassis_Mode(void)
         this->oriChassis.Speed.vx *= (1.26f / 660.0f);
         this->oriChassis.Speed.vy *= (1.26f / 660.0f);
         this->oriChassis.Speed.vw *=-(7.01f / 660.0f);
+		
+				this->oriChassis.Speed.vx *= 0;
+        this->oriChassis.Speed.vy *= 0;
+        this->oriChassis.Speed.vw *= 0;
         break;
 		case CHASSIS_ROS2_CMD: //ROS2接管模式
-        this->oriChassis.Speed.vx =   (fp32)udb.rx.apply.rc.ch[0]; 
-        this->oriChassis.Speed.vy =   (fp32)udb.rx.apply.rc.ch[1]; 
-        this->oriChassis.Speed.vw = - (fp32)udb.rx.apply.rc.ch[3]; 
+        this->oriChassis.Speed.vx =   cmd_vel_.Linear.X;
+        this->oriChassis.Speed.vy =   cmd_vel_.Linear.Y;
+        this->oriChassis.Speed.vw =   cmd_vel_.Angular.Z;
 
-        this->oriChassis.Speed.vx *= (1.26f / 660.0f);
-        this->oriChassis.Speed.vy *= (1.26f / 660.0f);
-        this->oriChassis.Speed.vw *=-(7.01f / 660.0f);
+//        this->oriChassis.Speed.vx *= (1.26f / 660.0f);
+//        this->oriChassis.Speed.vy *= (1.26f / 660.0f);
+//        this->oriChassis.Speed.vw *=-(7.01f / 660.0f);
         break;
     default:
         break;

@@ -50,7 +50,6 @@
 osThreadId CHASSIS_TASKHandle;
 osThreadId IMU_TASKHandle;
 osThreadId ROS2_UART_TASKHandle;
-osSemaphoreId IMU_ROS2_SemapHandle;
 osSemaphoreId MOTOR_ROS2_SemapHandle;
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,10 +94,6 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_MUTEX */
 
   /* Create the semaphores(s) */
-  /* definition and creation of IMU_ROS2_Semap */
-  osSemaphoreDef(IMU_ROS2_Semap);
-  IMU_ROS2_SemapHandle = osSemaphoreCreate(osSemaphore(IMU_ROS2_Semap), 1);
-
   /* definition and creation of MOTOR_ROS2_Semap */
   osSemaphoreDef(MOTOR_ROS2_Semap);
   MOTOR_ROS2_SemapHandle = osSemaphoreCreate(osSemaphore(MOTOR_ROS2_Semap), 1);

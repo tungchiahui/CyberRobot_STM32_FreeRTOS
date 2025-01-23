@@ -168,20 +168,10 @@
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>chassis,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
           <ItemText>buffer,0x10</ItemText>
         </Ww>
         <Ww>
-          <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>mpu6050</ItemText>
-        </Ww>
-        <Ww>
-          <count>6</count>
+          <count>4</count>
           <WinNumber>1</WinNumber>
           <ItemText>chassis,0x0A</ItemText>
         </Ww>

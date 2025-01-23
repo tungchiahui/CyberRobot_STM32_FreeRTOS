@@ -42,5 +42,4 @@ template/ros2_comm.o: ..\bsp\boards\Src\ros2_comm.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
   ..\applications\Inc\udb.h ..\bsp\boards\Inc\serial_pack.h \
-  ..\bsp\boards\Inc\mpu6050.h ..\applications\Inc\mg513_gmr500ppr.h \
-  ..\Core\Inc\tim.h
+  ..\applications\Inc\mg513_gmr500ppr.h ..\Core\Inc\tim.h
