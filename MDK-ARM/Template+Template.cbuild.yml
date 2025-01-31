@@ -160,6 +160,11 @@ build:
           misc:
             CPP:
               - -xc++
+        - file: ../Core/Src/dma.c
+          category: sourceC
+          misc:
+            CPP:
+              - -xc++
         - file: ../Core/Src/i2c.c
           category: sourceC
           misc:
@@ -338,6 +343,8 @@ build:
         - file: ../applications/Src/chassis_task.cpp
           category: sourceCpp
         - file: ../applications/Src/udb.cpp
+          category: sourceCpp
+        - file: ../applications/Src/odom_mg513.cpp
           category: sourceCpp
     - group: bsp/boards
       files:

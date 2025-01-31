@@ -3,8 +3,8 @@
 //#include "mpu6050.h"
 #include "tim.h"
 
-extern uint8_t udb_rx_buffer[1];
-extern uint8_t ros2_rx_buffer[1];
+extern uint8_t udb_rx_buffer[12];
+extern uint8_t ros2_rx_buffer[39];
 
 
 void startup_main(void)
@@ -22,12 +22,14 @@ void startup_main(void)
 //	HAL_TIM_Base_Start_IT(&htim13);
 	
 	//编码器定时器中断
-  HAL_TIM_Base_Start_IT(&htim6);
+ 	 HAL_TIM_Base_Start_IT(&htim6);
 	
-	//开启蓝牙串口接收中断
-	HAL_UART_Receive_IT(&huart2,udb_rx_buffer,1);
-	//开启ROS2串口接收中断
-	HAL_UART_Receive_IT(&huart3,ros2_rx_buffer,1);
+	//开启蓝牙遥控器串口DMA接收中断
+	// HAL_UART_Receive_DMA(&huart2,udb_rx_buffer,sizeof(udb_rx_buffer));
+	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, udb_rx_buffer, sizeof(udb_rx_buffer));
+	//开启ROS2串口DMA接收中断
+	// HAL_UART_Receive_DMA(&huart3,ros2_rx_buffer,sizeof(ros2_rx_buffer));
+	HAL_UARTEx_ReceiveToIdle_DMA(&huart3, ros2_rx_buffer, sizeof(ros2_rx_buffer));
 	
 	
 #if isRTOS==0    	//如果是裸机开发

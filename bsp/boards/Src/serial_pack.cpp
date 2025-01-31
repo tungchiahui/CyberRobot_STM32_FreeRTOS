@@ -72,7 +72,7 @@ bool SERIAL::RX::Data_Apply(void)
 bool SERIAL::TX::Serial_Transmit(uint8_t *pData, uint16_t Size)
 {
     //发送函数（在不同的机器上要用不同的函数替换）
-    HAL_StatusTypeDef flags =  HAL_UART_Transmit(&huart3,pData,Size,HAL_MAX_DELAY);
+    HAL_StatusTypeDef flags =  HAL_UART_Transmit_DMA(&huart3,pData,Size);
     if(flags != HAL_OK)
     {
         return false;

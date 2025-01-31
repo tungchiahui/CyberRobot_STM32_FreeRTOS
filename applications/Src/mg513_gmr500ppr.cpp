@@ -5,8 +5,9 @@
 #include "stm32f4xx_hal_tim.h"
 #include "tim.h"
 #include "pid_user.h"
-
 #include "mpu6050.h"
+#include "odom_mg513.h"
+
 
 
 //0号：左后
@@ -157,12 +158,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     /* 电机编码器运行中断 */
 	if(htim->Instance == TIM6)
 	{
-	   mg513_gmr500ppr_motor[0].encoder.get_finall_encoder_value(&motor0_encoder_htim);
-	   mg513_gmr500ppr_motor[1].encoder.get_finall_encoder_value(&motor1_encoder_htim);
-	   mg513_gmr500ppr_motor[2].encoder.get_finall_encoder_value(&motor2_encoder_htim);
-	   mg513_gmr500ppr_motor[3].encoder.get_finall_encoder_value(&motor3_encoder_htim);
-		
-		osSemaphoreRelease(MOTOR_ROS2_SemapHandle);
+	    mg513_gmr500ppr_motor[0].encoder.get_finall_encoder_value(&motor0_encoder_htim);
+	    mg513_gmr500ppr_motor[1].encoder.get_finall_encoder_value(&motor1_encoder_htim);
+	    mg513_gmr500ppr_motor[2].encoder.get_finall_encoder_value(&motor2_encoder_htim);
+	    mg513_gmr500ppr_motor[3].encoder.get_finall_encoder_value(&motor3_encoder_htim);
+        
+		//Analysis函数触发周期，单位是秒s
+        odom_motor_.Analysis(0.001f);
+
+	    osSemaphoreRelease(MOTOR_ROS2_SemapHandle);
 		
 //		 // 释放信号量
 //     if (xSemaphoreGiveFromISR(MOTOR_ROS2_SemapHandle, &xHigherPriorityTaskWoken) == pdTRUE) 

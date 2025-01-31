@@ -59,14 +59,14 @@ osThreadId_t IMU_TASKHandle;
 const osThreadAttr_t IMU_TASK_attributes = {
   .name = "IMU_TASK",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for ROS2_UART_TASK */
 osThreadId_t ROS2_UART_TASKHandle;
 const osThreadAttr_t ROS2_UART_TASK_attributes = {
   .name = "ROS2_UART_TASK",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for MOTOR_ROS2_Semap */
 osSemaphoreId_t MOTOR_ROS2_SemapHandle;

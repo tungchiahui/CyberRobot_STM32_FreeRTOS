@@ -66,7 +66,7 @@ class CHASSIS
     void Remote_Control_Chassis_Set_Mode(void);
     void Remote_Control_Chassis_Mode(void);
 
-    void Chassis_Orientation_Analysis(void);
+    void Chassis_Pose_Analysis(void);
 
     void Chassis_Kinematics_Calc(void);
 

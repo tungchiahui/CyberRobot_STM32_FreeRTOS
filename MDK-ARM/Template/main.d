@@ -36,6 +36,6 @@ template/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
-  ..\Core\Inc\i2c.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\gpio.h ..\Core\Inc\startup_main.h \
+  ..\Core\Inc\dma.h ..\Core\Inc\i2c.h ..\Core\Inc\tim.h \
+  ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\Core\Inc\startup_main.h \
   ..\bsp\boards\Inc\struct_typedef.h

@@ -80,6 +80,10 @@ project:
           misc:
             - CPP:
                 - -xc++
+        - file: ../Core/Src/dma.c
+          misc:
+            - CPP:
+                - -xc++
         - file: ../Core/Src/i2c.c
           misc:
             - CPP:
@@ -204,6 +208,7 @@ project:
         - file: ../applications/Src/chassis_api.cpp
         - file: ../applications/Src/chassis_task.cpp
         - file: ../applications/Src/udb.cpp
+        - file: ../applications/Src/odom_mg513.cpp
     - group: bsp/boards
       files:
         - file: ../bsp/boards/Src/bsp_delay.cpp

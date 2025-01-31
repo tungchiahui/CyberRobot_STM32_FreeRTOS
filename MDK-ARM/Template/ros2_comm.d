@@ -39,4 +39,5 @@ template/ros2_comm.o: ..\bsp\boards\Src\ros2_comm.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\applications\Inc\udb.h ..\bsp\boards\Inc\serial_pack.h \
-  ..\applications\Inc\mg513_gmr500ppr.h ..\Core\Inc\tim.h
+  ..\applications\Inc\mg513_gmr500ppr.h ..\Core\Inc\tim.h \
+  ..\applications\Inc\odom_mg513.h

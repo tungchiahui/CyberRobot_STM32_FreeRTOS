@@ -86,7 +86,7 @@ void CHASSIS::Remote_Control_Chassis_Mode(void)
  * @retval void
 * @attention 无
  */
-void CHASSIS::Chassis_Orientation_Analysis(void)
+void CHASSIS::Chassis_Pose_Analysis(void)
 {
     //IMU欧拉角
     // this->oriChassis.Euler.yaw = - imu605.Euler.yaw;
@@ -111,11 +111,11 @@ void CHASSIS::Chassis_Orientation_Analysis(void)
 
 //（单位：米）
 //轮距
-const fp32 Wheel_Spacing = 0.093f;
+fp32 Wheel_Spacing = 0.093f;
 //轴距
-const fp32 Alex_Spacing = 0.085f;
+fp32 Alex_Spacing = 0.085f;
 //轮子半径
-const fp32 Wheel_Radius  = 0.0375f;
+fp32 Wheel_Radius  = 0.0375f;
 
 /**
  * @brief  底盘运动解析式计算

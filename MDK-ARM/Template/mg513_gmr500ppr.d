@@ -39,4 +39,5 @@ template/mg513_gmr500ppr.o: ..\applications\Src\mg513_gmr500ppr.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\tim.h ..\applications\Inc\pid_user.h \
-  ..\applications\Inc\pid.h ..\bsp\boards\Inc\mpu6050.h
+  ..\applications\Inc\pid.h ..\bsp\boards\Inc\mpu6050.h \
+  ..\applications\Inc\odom_mg513.h

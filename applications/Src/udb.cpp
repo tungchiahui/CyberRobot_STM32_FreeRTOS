@@ -3,7 +3,7 @@
 #include <string.h> // For memcpy
 
 //USART_Debuger
-uint8_t udb_rx_buffer[1];
+uint8_t udb_rx_buffer[12];
 
 //应用数据
 UDB udb;
@@ -18,7 +18,7 @@ UDB udb;
 //}
 
 
-uint8_t buffer[UDB_RX_TOTAL_SIZE + 3];
+//uint8_t buffer[UDB_RX_TOTAL_SIZE + 3];
 bool UDB::RX::Data_Apply(void)
 {
 /*  可使用的数据
@@ -37,10 +37,10 @@ bool UDB::RX::Data_Apply(void)
 //	this->apply.rc.ch[2] = this->data.int16_buffer[2];
 //	this->apply.rc.ch[3] = this->data.int16_buffer[3];
 	
-	for(int16_t i = 0;i < UDB_RX_TOTAL_SIZE + 3;i++)
-	{
-		buffer[i] = this->data.buffer[i];
-	}
+//	for(int16_t i = 0;i < UDB_RX_TOTAL_SIZE + 3;i++)
+//	{
+//		buffer[i] = this->data.buffer[i];
+//	}
 	this->apply.rc.s[0] = (this->data.buffer[1] & 0x01) != 0;
 	this->apply.rc.s[1] = (this->data.buffer[1] & 0x02) != 0;
 	

@@ -40,7 +40,7 @@ void chassis_task(void const * argument)
         //chassis data update
 		//底盘数据更新
         chassis.Remote_Control_Chassis_Mode();
-        chassis.Chassis_Orientation_Analysis();
+        chassis.Chassis_Pose_Analysis();
 
 		//calculate the speed of the chassis
 		//底盘速度解算
