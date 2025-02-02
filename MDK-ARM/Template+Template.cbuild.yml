@@ -30,7 +30,7 @@ build:
     ASM:
       - -masm=auto
     C:
-      - -std=c99
+      - -std=c11
       - -fno-rtti
       - -funsigned-char
       - -fshort-enums
@@ -100,6 +100,7 @@ build:
     - ../applications/Inc
     - ../bsp/boards/Inc
     - ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
+    - ../Middlewares/ST/ARM/DSP/Inc
     - RTE/_Template
     - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.1.0/CMSIS/Core/Include
   add-path-asm:
@@ -362,6 +363,42 @@ build:
           category: sourceCpp
         - file: ../bsp/boards/Src/serial_pack.cpp
           category: sourceCpp
+    - group: Middlewares/Library/DSP Library/DSP Library
+      misc:
+        C:
+          - -Wno-packed
+          - -Wno-missing-variable-declarations
+          - -Wno-missing-prototypes
+          - -Wno-missing-noreturn
+          - -Wno-sign-conversion
+          - -Wno-nonportable-include-path
+          - -Wno-reserved-id-macro
+          - -Wno-unused-macros
+          - -Wno-documentation-unknown-command
+          - -Wno-documentation
+          - -Wno-license-management
+          - -Wno-parentheses-equality
+          - -Wno-covered-switch-default
+          - -Wno-unreachable-code-break
+        CPP:
+          - -xc++
+          - -Wno-packed
+          - -Wno-missing-variable-declarations
+          - -Wno-missing-prototypes
+          - -Wno-missing-noreturn
+          - -Wno-sign-conversion
+          - -Wno-nonportable-include-path
+          - -Wno-reserved-id-macro
+          - -Wno-unused-macros
+          - -Wno-documentation-unknown-command
+          - -Wno-documentation
+          - -Wno-license-management
+          - -Wno-parentheses-equality
+          - -Wno-covered-switch-default
+          - -Wno-unreachable-code-break
+      files:
+        - file: ../Middlewares/ST/ARM/DSP/Lib/arm_cortexM4lf_math.lib
+          category: library
   constructed-files:
     - file: RTE/_Template/RTE_Components.h
       category: header

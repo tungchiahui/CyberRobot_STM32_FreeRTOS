@@ -38,4 +38,6 @@ template/odom_mg513.o: ..\applications\Src\odom_mg513.cpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
-  ..\applications\Inc\mg513_gmr500ppr.h ..\Core\Inc\tim.h
+  ..\applications\Inc\mg513_gmr500ppr.h ..\Core\Inc\tim.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h

@@ -1,6 +1,7 @@
 #include "odom_mg513.h"
 #include "mg513_gmr500ppr.h"
-#include <cmath>
+//#include <cmath>
+#include "arm_math.h"
 
 ODOM_Motor odom_motor_;
 
@@ -31,8 +32,10 @@ void ODOM_Motor::Analysis(fp32 dt)
     this->vw = (encoder_wheel_velocities_[0] + encoder_wheel_velocities_[1] + encoder_wheel_velocities_[2] + encoder_wheel_velocities_[3]) / (4.0f * (Wheel_Spacing + Alex_Spacing));
 
     // 更新机器人的位置（假设机器人沿着y轴移动）
-    this->x_position += this->vx * std::__math::cos(this->yaw) * this->dt;  
-    this->y_position += this->vy * std::__math::sin(this->yaw) * this->dt;
+    // this->x_position += this->vx * std::__math::cos(this->yaw) * this->dt;  
+    // this->y_position += this->vy * std::__math::sin(this->yaw) * this->dt;
+    this->x_position += this->vx * arm_cos_f32(this->yaw) * this->dt;  
+    this->y_position += this->vy * arm_sin_f32(this->yaw) * this->dt;
     this->y_position = - y_position;
     this->yaw += this->vw * this->dt;
 

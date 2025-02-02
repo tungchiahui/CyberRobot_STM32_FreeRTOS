@@ -2,6 +2,7 @@
 #include "usart.h"
 //#include "mpu6050.h"
 #include "tim.h"
+#include "stm32f4xx.h"
 
 extern uint8_t udb_rx_buffer[12];
 extern uint8_t ros2_rx_buffer[39];

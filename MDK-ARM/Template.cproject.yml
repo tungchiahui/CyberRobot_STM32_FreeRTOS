@@ -19,13 +19,14 @@ project:
         - ../applications/Inc
         - ../bsp/boards/Inc
         - ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
+        - ../Middlewares/ST/ARM/DSP/Inc
       debug: "on"
       define:
         - USE_HAL_DRIVER
         - STM32F407xx
       misc:
         - C:
-            - -std=c99
+            - -std=c11
           C-CPP:
             - -fno-rtti
             - -funsigned-char
@@ -218,5 +219,26 @@ project:
         - file: ../bsp/boards/Src/MahonyAHRS.cpp
         - file: ../bsp/boards/Src/MadgwickAHRS.cpp
         - file: ../bsp/boards/Src/serial_pack.cpp
+    - group: Middlewares/Library/DSP Library/DSP Library
+      misc:
+        - C-CPP:
+            - -Wno-packed
+            - -Wno-missing-variable-declarations
+            - -Wno-missing-prototypes
+            - -Wno-missing-noreturn
+            - -Wno-sign-conversion
+            - -Wno-nonportable-include-path
+            - -Wno-reserved-id-macro
+            - -Wno-unused-macros
+            - -Wno-documentation-unknown-command
+            - -Wno-documentation
+            - -Wno-license-management
+            - -Wno-parentheses-equality
+            - -Wno-covered-switch-default
+            - -Wno-unreachable-code-break
+          CPP:
+            - -xc++
+      files:
+        - file: ../Middlewares/ST/ARM/DSP/Lib/arm_cortexM4lf_math.lib
   components:
     - component: ARM::CMSIS:CORE
