@@ -20,7 +20,8 @@ void ODOM_Motor::Analysis(fp32 dt)
 	this->dt = dt;
 	for(int16_t i = 0;i < 4;i++)
     {
-        encoder_wheel_velocities_[i] = mg513_gmr500ppr_motor[i].encoder.motor_data.motor_speed;
+        // 将 RPM 转换为 m/s
+        encoder_wheel_velocities_[i] = mg513_gmr500ppr_motor[i].encoder.motor_data.motor_speed  * 2.0f * M_PI * wheel_radius_ / 60.0f;
     }
     // 计算机器人前进的线速度和角速度，公式不需要轮半径
     //线速度，四个轮子在机器人的运动学模型中贡献相同，所以要除以4
@@ -42,5 +43,7 @@ void ODOM_Motor::Analysis(fp32 dt)
     // 保证 yaw 始终在 -PI 到 PI 之间
     if (this->yaw > 3.14159265358979f) this->yaw -= 2.0 * 3.14159265358979f;
     if (this->yaw < -3.14159265358979f) this->yaw += 2.0 * 3.14159265358979f;
-
+    
+    this->yaw = -this->yaw;
+    
 }
