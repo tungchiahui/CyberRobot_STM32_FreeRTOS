@@ -1,0 +1,13 @@
+# ninja log v6
+2	315	7606070856330002	Template+Template/src/Template+Template-stamp/Template+Template-mkdir	897bf3b2bd652183
+2	315	7606070856330002	C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir	897bf3b2bd652183
+316	486	7606070857992339	Template+Template/src/Template+Template-stamp/Template+Template-download	607161d53a99c671
+316	486	7606070857992339	C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download	607161d53a99c671
+487	727	7606070860221087	Template+Template/src/Template+Template-stamp/Template+Template-update	4543c9ac8538799e
+487	727	7606070860221087	C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update	4543c9ac8538799e
+727	1096	7606070864075999	Template+Template/src/Template+Template-stamp/Template+Template-patch	ac4a5fce06b0f4d4
+727	1096	7606070864075999	C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch	ac4a5fce06b0f4d4
+1096	8824	7606070941424535	Template+Template/src/Template+Template-stamp/Template+Template-configure	a1aca3e6aecb1205
+1096	8824	7606070941424535	C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure	a1aca3e6aecb1205
+8824	9097	7606070941424535	Template+Template/src/Template+Template-stamp/Template+Template-database	2b8bbe7bea9748e3
+8824	9097	7606070941424535	C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-database	2b8bbe7bea9748e3
