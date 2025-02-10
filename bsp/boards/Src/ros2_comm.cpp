@@ -40,7 +40,7 @@ void ros2_uart_task(void const * argument)
 //							mg513_gmr500ppr_motor[2].encoder.motor_data.motor_speed,mg513_gmr500ppr_motor[3].encoder.motor_data.motor_speed,
 //							mg513_gmr500ppr_motor[0].encoder.motor_data.motor_position,mg513_gmr500ppr_motor[1].encoder.motor_data.motor_position,
 //							mg513_gmr500ppr_motor[2].encoder.motor_data.motor_position,mg513_gmr500ppr_motor[3].encoder.motor_data.motor_position,
-							odom_motor_.vx,odom_motor_.vy,odom_motor_.vw,odom_motor_.yaw,odom_motor_.dt
+							odom_motor_.vx,odom_motor_.vy,odom_motor_.vw,odom_motor_.yaw,odom_motor_.dt,odom_motor_.x_position,odom_motor_.y_position
 							};
 
 		// ·¢ËÍÊý¾Ý
