@@ -173,7 +173,7 @@
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rx_buffer,0x10</ItemText>
+          <ItemText>odom_motor_</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

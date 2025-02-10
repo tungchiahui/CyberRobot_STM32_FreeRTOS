@@ -3,11 +3,11 @@
 <title>Static Call Graph - [Template\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Template\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Fri Feb  7 12:51:28 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Mon Feb 10 09:50:05 2025
 <BR><P>
-<H3>Maximum Stack Usage =        208 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        184 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-ros2_uart_task &rArr; osSemaphoreAcquire &rArr; xQueueSemaphoreTake &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
+__rt_entry_main &rArr; main &rArr; MX_TIM5_Init &rArr; HAL_TIM_Encoder_Init &rArr; HAL_TIM_Encoder_MspInit &rArr; HAL_GPIO_Init
 <P>
 <H3>
 Functions with no stack information
@@ -1457,7 +1457,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[b6]"></a>ODOM_Motor::Analysis(float)</STRONG> (Thumb, 388 bytes, Stack size 24 bytes, odom_mg513.o(.text._ZN10ODOM_Motor8AnalysisEf))
+<P><STRONG><a name="[b6]"></a>ODOM_Motor::Analysis(float)</STRONG> (Thumb, 380 bytes, Stack size 24 bytes, odom_mg513.o(.text._ZN10ODOM_Motor8AnalysisEf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ODOM_Motor::Analysis(float)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
@@ -1743,8 +1743,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseNewTask
 </UL>
 
-<P><STRONG><a name="[66]"></a>ros2_uart_task</STRONG> (Thumb, 176 bytes, Stack size 88 bytes, ros2_comm.o(.text.ros2_uart_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = ros2_uart_task &rArr; osSemaphoreAcquire &rArr; xQueueSemaphoreTake &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
+<P><STRONG><a name="[66]"></a>ros2_uart_task</STRONG> (Thumb, 120 bytes, Stack size 56 bytes, ros2_comm.o(.text.ros2_uart_task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = ros2_uart_task &rArr; osSemaphoreAcquire &rArr; xQueueSemaphoreTake &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osSemaphoreAcquire
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelayUntil

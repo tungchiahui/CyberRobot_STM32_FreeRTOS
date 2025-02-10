@@ -22,6 +22,7 @@ class ODOM_Motor
     fp32 x_position;
     fp32 y_position;
     fp32 yaw;
+//		fp32 yaw_deg;
 
     //Analysis函数触发周期，单位是秒s
     fp32 dt;
