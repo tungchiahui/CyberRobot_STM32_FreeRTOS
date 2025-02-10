@@ -1,5 +1,5 @@
 build-idx:
-  generated-by: csolution version 2.7.0
+  generated-by: csolution version 2.6.0
   csolution: Template.csolution.yml
   tmpdir: tmp
   cprojects:
@@ -10,9 +10,6 @@ build-idx:
       configuration: +Template
       messages:
         info:
+          - Template.cbuild-set.yml - file is already up-to-date
           - Template.cbuild-pack.yml - file is already up-to-date
-          - Template.cbuild-run.yml - file is already up-to-date
           - Template+Template.cbuild.yml - file is already up-to-date
-      packs-unused:
-        - pack: ARM::CMSIS-DSP@1.16.2
-        - pack: ARM::CMSIS-NN@7.0.0
