@@ -164,7 +164,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	    mg513_gmr500ppr_motor[3].encoder.get_finall_encoder_value(&motor3_encoder_htim);
         
 		//Analysis函数触发周期，单位是秒s
-        odom_motor_.Analysis(0.001f);
+//      odom_motor_.Analysis(0.001f);
 
 	    osSemaphoreRelease(MOTOR_ROS2_SemapHandle);
 		

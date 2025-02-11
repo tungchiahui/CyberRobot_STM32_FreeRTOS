@@ -1,0 +1,37 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/CMakeFiles/Template+Template-build"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/CMakeFiles/Template+Template-build.rule"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-build.rule"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-configure.rule"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-patch.rule"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-update.rule"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-download.rule"
+		},
+		{
+			"file" : "C:/Users/tung/UserFolder/XiaomiCloud/Work/Source/CyberNaviRobot/STM32_FreeRTOS_MainController/MDK-ARM/tmp/Template+Template/src/Template+Template-stamp/Template+Template-mkdir.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Template+Template"
+		],
+		"name" : "Template+Template-build"
+	}
+}
